@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Na v4, criamos variáveis de tema direto no CSS */
 @theme {
   --color-accent: #e63946;
 }
