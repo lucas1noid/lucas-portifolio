@@ -1,5 +1,19 @@
-*{
+@import "tailwindcss";
+
+/* Na v4, criamos variáveis de tema direto no CSS */
+@theme {
+  --color-accent: #e63946;
+}
+
+/* Aplicando o fundo escuro direto na raiz para garantir que não fique branco */
+body {
+  background-color: #09090b; /* bg-zinc-950 */
+  color: white;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
