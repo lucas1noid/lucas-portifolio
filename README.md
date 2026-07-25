@@ -1,7 +1,6 @@
 # Portfólio — Lucas Lopes
 
-Portfólio experimental construído com React e CSS, sem biblioteca de componentes ou animações. O build também
-prepara o pequeno adaptador necessário para servir a SPA no Sites.
+Portfólio em fase experimental construído com React e CSS, sem biblioteca de componentes ou animações.
 
 ## Desenvolvimento
 
@@ -16,3 +15,5 @@ npm run dev
 npm run lint
 npm run build
 ```
+
+O diretório para publicação é `dist`.

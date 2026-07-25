@@ -16,34 +16,24 @@ function Arrow({ direction = 'diagonal' }) {
   )
 }
 
-function CustomCursor() {
-  useEffect(() => {
-    if (!window.matchMedia('(pointer: fine)').matches) return undefined
-
-    const cursor = document.querySelector('.cursor')
-    const moveCursor = ({ clientX, clientY }) => {
-      cursor.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`
-    }
-    const toggleCursor = ({ target }) => {
-      cursor.classList.toggle('cursor--active', Boolean(target.closest('a, button')))
-    }
-
-    document.body.classList.add('has-custom-cursor')
-    window.addEventListener('pointermove', moveCursor)
-    document.addEventListener('pointerover', toggleCursor)
-
-    return () => {
-      document.body.classList.remove('has-custom-cursor')
-      window.removeEventListener('pointermove', moveCursor)
-      document.removeEventListener('pointerover', toggleCursor)
-    }
-  }, [])
-
-  return <div className="cursor" aria-hidden="true" />
-}
-
 function Header({ open, setOpen }) {
   const closeMenu = () => setOpen(false)
+
+  useEffect(() => {
+    if (!open) return undefined
+
+    const closeOnEscape = ({ key }) => {
+      if (key === 'Escape') setOpen(false)
+    }
+
+    document.body.classList.add('menu-open')
+    window.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.classList.remove('menu-open')
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [open, setOpen])
 
   return (
     <header className="site-header">
@@ -56,6 +46,7 @@ function Header({ open, setOpen }) {
         type="button"
         aria-expanded={open}
         aria-controls="main-navigation"
+        aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         onClick={() => setOpen((current) => !current)}
       >
         <span>{open ? 'FECHAR' : 'MENU'}</span>
@@ -114,7 +105,6 @@ function App() {
 
   return (
     <>
-      <CustomCursor />
       <Header open={menuOpen} setOpen={setMenuOpen} />
 
       <main>
