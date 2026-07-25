@@ -16,6 +16,75 @@ function Arrow({ direction = 'diagonal' }) {
   )
 }
 
+function LoadingScreen() {
+  const [progress, setProgress] = useState(0)
+  const [complete, setComplete] = useState(false)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const duration = 3000
+    const startedAt = performance.now()
+    let animationFrame
+    let exitTimer
+
+    document.body.classList.add('is-loading')
+
+    const updateProgress = (currentTime) => {
+      const nextProgress = Math.min(100, Math.floor(((currentTime - startedAt) / duration) * 100))
+      setProgress((current) => (current === nextProgress ? current : nextProgress))
+
+      if (nextProgress < 100) {
+        animationFrame = requestAnimationFrame(updateProgress)
+        return
+      }
+
+      setComplete(true)
+      exitTimer = window.setTimeout(() => {
+        document.body.classList.remove('is-loading')
+        setVisible(false)
+      }, 500)
+    }
+
+    animationFrame = requestAnimationFrame(updateProgress)
+
+    return () => {
+      cancelAnimationFrame(animationFrame)
+      clearTimeout(exitTimer)
+      document.body.classList.remove('is-loading')
+    }
+  }, [])
+
+  if (!visible) return null
+
+  return (
+    <div className={`loader ${complete ? 'loader--complete' : ''}`} aria-label="Carregando portfólio">
+      <div className="loader__panel">
+        <video autoPlay loop muted playsInline preload="auto" aria-hidden="true">
+          <source src="/noid-logo.webm" type="video/webm" />
+        </video>
+
+        <div
+          className="loader__progress"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow={progress}
+        >
+          <div className="loader__meta">
+            <span>INITIALIZING_</span>
+            <strong>{progress}%</strong>
+          </div>
+          <div className="loader__track">
+            <span style={{ transform: `scaleX(${progress / 100})` }} />
+          </div>
+        </div>
+      </div>
+
+      <p className="loader__coordinates">05°47&apos;S / 35°12&apos;W</p>
+    </div>
+  )
+}
+
 function CustomCursor() {
   const cursorRef = useRef(null)
 
@@ -139,6 +208,7 @@ function App() {
 
   return (
     <>
+      <LoadingScreen />
       <CustomCursor />
       <Header open={menuOpen} setOpen={setMenuOpen} />
 
@@ -152,7 +222,10 @@ function App() {
           <div className="hero__content">
             <p className="eyebrow hero__eyebrow">
               <span>Computer Science</span>
-              <span>UFRN · Natal/RN</span>
+              <span className="hero__verse">
+                𝔍𝔢𝔰𝔲𝔰 𝔦𝔰 𝔱𝔥𝔢 𝔴𝔞𝔶, 𝔱𝔥𝔢 𝔱𝔯𝔲𝔱𝔥, 𝔞𝔫𝔡 𝔱𝔥𝔢 𝔩𝔦𝔣𝔢.
+                <small>(𝔍𝔫 14:6)</small>
+              </span>
             </p>
 
             <h1 aria-label="Software developer">
@@ -162,8 +235,8 @@ function App() {
 
             <div className="hero__intro">
               <p>
-                Olá, eu sou <strong>Lucas Lopes.</strong> Transformo lógica em experiências digitais precisas,
-                expressivas e feitas para durar.
+                I'm <strong>Lucas Lopes</strong>, and this is the site I created to 
+                share a bit more about myself and my work as a programmer.
               </p>
               <a className="text-link" href="#projetos">
                 Explorar projetos <Arrow direction="down" />
@@ -205,29 +278,13 @@ function App() {
                 </h2>
                 <div className="about__body">
                   <p>
-                    Estudante de Ciência da Computação na UFRN, construo minha trajetória entre algoritmos,
-                    orientação a objetos e desenvolvimento backend.
+                    I am an aspiring software developer currently studying Computer Science at UFRN - DIMAp.
                   </p>
                   <p>
-                    Gosto de desmontar problemas complexos, encontrar sua estrutura e remontá-los como soluções
-                    simples — sem deixar a personalidade de lado.
+                    I am passionate about technology and always eager to learn new things. I enjoy breaking down and creating the logic 
+                    behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
                   </p>
                 </div>
-              </div>
-            </div>
-
-            <div className="facts" data-reveal>
-              <div>
-                <span>BASE</span>
-                <strong>Natal, RN</strong>
-              </div>
-              <div>
-                <span>FOCO</span>
-                <strong>Backend &amp; Software</strong>
-              </div>
-              <div>
-                <span>STATUS</span>
-                <strong>Em evolução contínua</strong>
               </div>
             </div>
           </div>

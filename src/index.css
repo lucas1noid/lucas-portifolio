@@ -46,6 +46,89 @@ body.menu-open {
   overflow: hidden;
 }
 
+body.is-loading {
+  overflow: hidden;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    var(--ink);
+  background-size: 48px 48px;
+  color: var(--white);
+  place-items: center;
+  transition: visibility 0.5s, opacity 0.5s ease;
+}
+
+.loader--complete {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader__panel {
+  width: min(82vw, 34rem);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loader--complete .loader__panel {
+  transform: translateY(-1rem);
+}
+
+.loader video {
+  display: block;
+  width: clamp(11rem, 26vw, 17rem);
+  aspect-ratio: 832 / 444;
+  margin: 0 auto clamp(2rem, 5vh, 4rem);
+  object-fit: contain;
+}
+
+.loader__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  font: 0.58rem/1 var(--mono);
+  letter-spacing: 0.1em;
+}
+
+.loader__meta strong {
+  color: var(--red);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+}
+
+.loader__track {
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.loader__track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--red);
+  transform-origin: left;
+  transition: transform 0.08s linear;
+}
+
+.loader__coordinates {
+  position: absolute;
+  right: var(--safe);
+  bottom: 2rem;
+  margin: 0;
+  color: #777;
+  font: 0.5rem/1 var(--mono);
+  letter-spacing: 0.1em;
+}
+
 .has-custom-cursor,
 .has-custom-cursor a,
 .has-custom-cursor button {
@@ -201,7 +284,7 @@ a:hover .arrow--down {
   display: flex;
   align-items: center;
   gap: clamp(1rem, 2.5vw, 2.5rem);
-  mix-blend-mode: difference;
+  color: var(--ink);
 }
 
 .navigation a {
@@ -280,12 +363,36 @@ a:hover .arrow--down {
 }
 
 .hero__eyebrow {
-  width: min(72%, 910px);
+  position: relative;
+  width: 100%;
+}
+
+.hero__eyebrow span:first-child {
+  display: block;
   margin-left: 10vw;
+  font-size: 0.72rem;
+}
+
+.hero__verse {
+  position: absolute;
+  top: -0.4rem;
+  left: 62%;
+  width: min(34vw, 30rem);
+  line-height: 1.5;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.hero__verse small {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--red);
+  font: 0.55rem/1 var(--mono);
+  letter-spacing: 0.18em;
 }
 
 .hero h1 {
-  margin: clamp(2rem, 5vh, 4.5rem) 0 0;
+  margin: clamp(3.5rem, 7vh, 5.5rem) 0 0;
   font: 800 clamp(3.4rem, 11.5vw, 11.5rem)/0.68 var(--display);
   letter-spacing: -0.075em;
   white-space: nowrap;
@@ -515,38 +622,6 @@ a:hover .arrow--down {
 
 .about__body p:first-child {
   color: var(--white);
-}
-
-.facts {
-  display: grid;
-  margin-top: clamp(5rem, 10vw, 10rem);
-  border-block: 1px solid var(--dark-line);
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.facts div {
-  padding: 1.5rem;
-}
-
-.facts div + div {
-  border-left: 1px solid var(--dark-line);
-}
-
-.facts span,
-.facts strong {
-  display: block;
-}
-
-.facts span {
-  margin-bottom: 0.45rem;
-  color: var(--red);
-  font: 0.55rem/1 var(--mono);
-  letter-spacing: 0.12em;
-}
-
-.facts strong {
-  font-size: 0.9rem;
-  font-weight: 400;
 }
 
 /* Projects */
@@ -1121,12 +1196,24 @@ footer div {
   }
 
   .hero__eyebrow {
-    width: 100%;
-    margin: 0;
+    display: block;
+  }
+
+  .hero__eyebrow span:first-child {
+    margin-left: 0;
+  }
+
+  .hero__verse {
+    position: static;
+    display: block;
+    width: min(100%, 30rem);
+    margin: 2rem auto 0;
+    line-height: 1.5;
+    transform: none;
   }
 
   .hero h1 {
-    margin-top: 5rem;
+    margin-top: 3rem;
     font-size: clamp(3.15rem, 17vw, 5.5rem);
     line-height: 0.75;
   }
@@ -1161,7 +1248,6 @@ footer div {
 
   .about__grid,
   .about__body,
-  .facts,
   .experience__heading,
   .experience__list article {
     grid-template-columns: 1fr;
@@ -1181,15 +1267,6 @@ footer div {
 
   .about__body {
     gap: 1.5rem;
-  }
-
-  .facts div {
-    padding: 1.2rem 0;
-  }
-
-  .facts div + div {
-    border-top: 1px solid var(--dark-line);
-    border-left: 0;
   }
 
   .section-heading h2 {
