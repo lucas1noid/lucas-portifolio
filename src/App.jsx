@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { community, projects, skills } from './data/portfolio'
 
 const navigation = [
@@ -14,6 +14,38 @@ function Arrow({ direction = 'diagonal' }) {
       {direction === 'down' ? '↓' : '↗'}
     </span>
   )
+}
+
+function CustomCursor() {
+  const cursorRef = useRef(null)
+
+  useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches) return undefined
+
+    const cursor = cursorRef.current
+    const moveCursor = ({ clientX, clientY }) => {
+      cursor.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`
+      cursor.classList.add('cursor--visible')
+    }
+    const updateCursor = ({ target }) => {
+      cursor.classList.toggle('cursor--active', Boolean(target.closest('a, button')))
+    }
+    const hideCursor = () => cursor.classList.remove('cursor--visible')
+
+    document.body.classList.add('has-custom-cursor')
+    window.addEventListener('pointermove', moveCursor)
+    document.addEventListener('pointerover', updateCursor)
+    document.documentElement.addEventListener('pointerleave', hideCursor)
+
+    return () => {
+      document.body.classList.remove('has-custom-cursor')
+      window.removeEventListener('pointermove', moveCursor)
+      document.removeEventListener('pointerover', updateCursor)
+      document.documentElement.removeEventListener('pointerleave', hideCursor)
+    }
+  }, [])
+
+  return <div ref={cursorRef} className="cursor" aria-hidden="true" />
 }
 
 function Header({ open, setOpen }) {
@@ -105,6 +137,7 @@ function App() {
 
   return (
     <>
+      <CustomCursor />
       <Header open={menuOpen} setOpen={setMenuOpen} />
 
       <main>
@@ -141,7 +174,7 @@ function App() {
             Disponível para novas conexões
           </div>
 
-          <p className="hero__role">ENGENHEIRO EM FORMAÇÃO &amp; CRIADOR DIGITAL</p>
+          <p className="hero__role">DEV EM FORMAÇÃO &amp; ENTUSIASTA DIGITAL</p>
         </section>
 
         <section className="about dark-section" id="sobre">

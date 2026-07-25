@@ -46,6 +46,38 @@ body.menu-open {
   overflow: hidden;
 }
 
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  z-index: 999;
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+}
+
+.cursor--visible {
+  opacity: 1;
+}
+
+.cursor--active {
+  top: -22px;
+  left: -22px;
+  width: 44px;
+  background: rgba(225, 29, 72, 0.35);
+  mix-blend-mode: difference;
+}
+
 a,
 button {
   color: inherit;
