@@ -178,15 +178,21 @@ a:hover .arrow--down {
   justify-content: space-between;
   padding: 1.25rem var(--safe);
   color: var(--white);
-  mix-blend-mode: difference;
 }
 
 .brand {
-  font: 800 0.95rem/1 var(--display);
-  letter-spacing: 0.08em;
+  display: block;
+  width: 6rem;
+  height: 3.2rem;
 }
 
-.brand span,
+.brand video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .navigation small {
   color: var(--red);
 }
@@ -195,6 +201,7 @@ a:hover .arrow--down {
   display: flex;
   align-items: center;
   gap: clamp(1rem, 2.5vw, 2.5rem);
+  mix-blend-mode: difference;
 }
 
 .navigation a {
@@ -1004,8 +1011,25 @@ footer div {
   .site-header {
     padding-block: 1rem;
     background: rgba(11, 11, 11, 0.92);
-    mix-blend-mode: normal;
     backdrop-filter: blur(10px);
+  }
+
+  .brand {
+    z-index: 2;
+    width: 5.25rem;
+    height: 2.8rem;
+    transition: opacity 0.2s ease, visibility 0.2s;
+  }
+
+  .site-header--menu-open {
+    background: var(--ink);
+    backdrop-filter: none;
+  }
+
+  .site-header--menu-open .brand {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .menu-button {
@@ -1031,19 +1055,25 @@ footer div {
 
   .navigation {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     z-index: 1;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100svh;
     visibility: hidden;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     gap: 0;
     padding: 5rem var(--safe);
+    overflow-y: auto;
     background: var(--ink);
     color: var(--white);
     opacity: 0;
     transform: translateY(-1rem);
     transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    mix-blend-mode: normal;
   }
 
   .navigation--open {
@@ -1054,9 +1084,11 @@ footer div {
 
   .navigation a {
     display: flex;
+    flex: 0 0 auto;
     min-height: 4.5rem;
     align-items: center;
     border-bottom: 1px solid var(--dark-line);
+    background: var(--ink);
     font: 700 clamp(2rem, 11vw, 3rem)/1 var(--display);
     letter-spacing: -0.04em;
     text-transform: none;

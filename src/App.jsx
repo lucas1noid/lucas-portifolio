@@ -68,9 +68,11 @@ function Header({ open, setOpen }) {
   }, [open, setOpen])
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${open ? 'site-header--menu-open' : ''}`}>
       <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Lucas Lopes, voltar ao início">
-        NOID<span>.SYS</span>
+        <video autoPlay loop muted playsInline preload="auto" aria-hidden="true">
+          <source src="/noid-logo.webm" type="video/webm" />
+        </video>
       </a>
 
       <button
