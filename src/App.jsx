@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { community, projects, skills } from './data/portfolio'
 
 const navigation = [
-  ['01', 'Sobre', '#sobre'],
-  ['02', 'Projetos', '#projetos'],
-  ['03', 'Atuação', '#atuacao'],
-  ['04', 'Contato', '#contato'],
+  ['01', 'About', '#sobre'],
+  ['02', 'Projects', '#projetos'],
+  ['03', 'Experience', '#atuacao'],
+  ['04', 'Contact', '#contato'],
 ]
 
 function Arrow({ direction = 'diagonal' }) {
@@ -57,7 +57,7 @@ function LoadingScreen() {
   if (!visible) return null
 
   return (
-    <div className={`loader ${complete ? 'loader--complete' : ''}`} aria-label="Carregando portfólio">
+    <div className={`loader ${complete ? 'loader--complete' : ''}`} aria-label="Loading portfolio">
       <div className="loader__panel">
         <video autoPlay loop muted playsInline preload="auto" aria-hidden="true">
           <source src="/noid-logo.webm" type="video/webm" />
@@ -138,7 +138,7 @@ function Header({ open, setOpen }) {
 
   return (
     <header className={`site-header ${open ? 'site-header--menu-open' : ''}`}>
-      <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Lucas Lopes, voltar ao início">
+      <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Lucas Lopes, back to home">
         <video autoPlay loop muted playsInline preload="auto" aria-hidden="true">
           <source src="/noid-logo.webm" type="video/webm" />
         </video>
@@ -149,14 +149,14 @@ function Header({ open, setOpen }) {
         type="button"
         aria-expanded={open}
         aria-controls="main-navigation"
-        aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+        aria-label={open ? 'Close menu' : 'Open menu'}
         onClick={() => setOpen((current) => !current)}
       >
-        <span>{open ? 'FECHAR' : 'MENU'}</span>
+        <span>{open ? 'CLOSE' : 'MENU'}</span>
         <i aria-hidden="true" />
       </button>
 
-      <nav id="main-navigation" className={`navigation ${open ? 'navigation--open' : ''}`} aria-label="Principal">
+      <nav id="main-navigation" className={`navigation ${open ? 'navigation--open' : ''}`} aria-label="Primary">
         {navigation.map(([index, label, href]) => (
           <a href={href} onClick={closeMenu} key={href}>
             <small>{index}</small>
@@ -235,27 +235,27 @@ function App() {
 
             <div className="hero__intro">
               <p>
-                I'm <strong>Lucas Lopes</strong>, and this is the site I created to 
+                Hello! I'm <strong>Lucas Lopes</strong>, and this is the portfolio I created to 
                 share a bit more about myself and my work as a programmer.
               </p>
               <a className="text-link" href="#projetos">
-                Explorar projetos <Arrow direction="down" />
+                Explore projects <Arrow direction="down" />
               </a>
             </div>
           </div>
 
           <div className="hero__status">
             <span className="status-dot" />
-            Disponível para novas conexões
+            Available for new connections
           </div>
 
-          <p className="hero__role">DEV EM FORMAÇÃO &amp; ENTUSIASTA DIGITAL</p>
+          <p className="hero__role">DEVELOPER IN TRAINING &amp; DIGITAL ENTHUSIAST</p>
         </section>
 
         <section className="about dark-section" id="sobre">
           <div className="section-shell">
             <SectionLabel index="01" light>
-              Background
+              About me
             </SectionLabel>
 
             <div className="about__grid">
@@ -270,20 +270,24 @@ function App() {
               </div>
 
               <div className="about__copy" data-reveal>
-                <p className="kicker">NAVEGANDO ENTRE CÓDIGO E COMUNIDADE</p>
-                <h2>
-                  Curiosidade para <em>entender.</em>
-                  <br />
-                  Código para <em>construir.</em>
-                </h2>
-                <div className="about__body">
-                  <p>
+                <div className="about__story">
+                  <figure className="about__photo about__photo--portrait">
+                    <img src="/images/lucas-retrato.png" alt="Lucas Lopes smiling" />
+                  </figure>
+
+                  <p className="about__lead">
                     I am an aspiring software developer currently studying Computer Science at UFRN - DIMAp.
                   </p>
-                  <p>
-                    I am passionate about technology and always eager to learn new things. I enjoy breaking down and creating the logic 
-                    behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
+
+                  <p className="about__body">
+                    I am passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
                   </p>
+
+                  <div className="about__gallery">
+                    <figure className="about__photo about__photo--hackathon">
+                      <img src="/images/lucas-hackathon.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
+                    </figure>
+                  </div>
                 </div>
               </div>
             </div>
@@ -295,9 +299,9 @@ function App() {
             <SectionLabel index="02">Selected work</SectionLabel>
 
             <div className="section-heading" data-reveal>
-              <h2>PROJETOS</h2>
+              <h2>PROJECTS</h2>
               <p>
-                Uma seleção de sistemas e experimentos que exploram arquitetura, lógica e resolução de problemas.
+                A selection of systems and experiments exploring architecture, logic, and problem-solving.
               </p>
             </div>
 
@@ -312,13 +316,13 @@ function App() {
                   <div className="project__copy">
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
-                    <ul aria-label={`Tecnologias de ${project.title}`}>
+                    <ul aria-label={`Technologies used in ${project.title}`}>
                       {project.techs.map((tech) => (
                         <li key={tech}>{tech}</li>
                       ))}
                     </ul>
                     <a href={project.link} target="_blank" rel="noreferrer">
-                      Ver no GitHub <Arrow />
+                      View on GitHub <Arrow />
                     </a>
                   </div>
 
@@ -328,7 +332,7 @@ function App() {
             </div>
 
             <a className="all-projects" href="https://github.com/lucas1noid" target="_blank" rel="noreferrer">
-              <span>Explorar todos no GitHub</span>
+              <span>Explore all on GitHub</span>
               <Arrow />
             </a>
           </div>
@@ -340,12 +344,12 @@ function App() {
           </div>
           <div className="section-shell">
             <SectionLabel index="03" light>
-              Além do código
+              Beyond code
             </SectionLabel>
 
             <div className="experience__heading" data-reveal>
-              <p>TECNOLOGIA TAMBÉM É SOBRE PESSOAS.</p>
-              <h2>ATUAÇÃO &amp; COMUNIDADE</h2>
+              <p>TECHNOLOGY IS ALSO ABOUT PEOPLE.</p>
+              <h2>COMMUNITY &amp; EXPERIENCE</h2>
             </div>
 
             <div className="experience__list">
@@ -366,7 +370,7 @@ function App() {
           </div>
         </section>
 
-        <section className="toolkit" aria-label="Tecnologias">
+        <section className="toolkit" aria-label="Technologies">
           <div className="toolkit__track">
             {[...skills, ...skills].map((skill, index) => (
               <span key={`${skill}-${index}`}>
@@ -383,22 +387,22 @@ function App() {
 
             <div className="contact__layout">
               <div className="contact__title" data-reveal>
-                <p>Tem uma ideia, projeto ou só quer trocar uma ideia?</p>
+                <p>Have an idea, a project, or just want to chat?</p>
                 <h2>
-                  VAMOS
-                  <span>CONSTRUIR</span>
-                  ALGO.
+                  LET&apos;S
+                  <span>BUILD</span>
+                  SOMETHING.
                 </h2>
               </div>
 
               <div className="contact__action" data-reveal>
                 <p>
-                  Estou aberto a projetos, colaborações acadêmicas e conversas sobre tecnologia, backend e
-                  comunidade dev.
+                  I&apos;m open to projects, academic collaborations, and conversations about technology, backend development,
+                  and the developer community.
                 </p>
-                <a href="mailto:lucas1noid@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">
+                <a href="mailto:lucas1noid@gmail.com?subject=Contact%20from%20the%20portfolio">
                   <span>
-                    Enviar uma mensagem
+                    Send a message
                     <small>lucas1noid@gmail.com</small>
                   </span>
                   <Arrow />

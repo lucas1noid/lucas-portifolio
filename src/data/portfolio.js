@@ -3,19 +3,19 @@ export const projects = [
     title: 'MeuPet',
     short: 'PET / SYSTEM',
     code: 'SPRING.OBJ_01',
-    type: 'Sistema de gerenciamento',
+    type: 'Management system',
     description:
-      'Sistema para gestão de pets em contextos domésticos e comerciais, estruturado com orientação a objetos e pensado para crescer com consistência.',
-    techs: ['Java', 'Spring Boot', 'POO'],
+      'A pet management system for home and commercial contexts, built with object-oriented programming and designed to scale consistently.',
+    techs: ['Java', 'Spring Boot', 'OOP'],
     link: 'https://github.com/lucas1noid',
   },
   {
     title: 'Snaze',
     short: 'SNAKE / ENGINE',
     code: 'CPP.STATE_02',
-    type: 'Lógica de jogos',
+    type: 'Game logic',
     description:
-      'Releitura do clássico Snake em C++, com foco em máquina de estados, regras de jogo e gerenciamento consciente de recursos em memória.',
+      'A reinterpretation of the classic Snake game in C++, focused on state machines, game rules, and mindful in-memory resource management.',
     techs: ['C++', 'State Machine', 'Game Logic'],
     link: 'https://github.com/lucas1noid',
   },
@@ -23,10 +23,10 @@ export const projects = [
     title: 'SLOC Analyzer',
     short: 'CODE / METRICS',
     code: 'CPP.SLOC_03',
-    type: 'Ferramenta para desenvolvedores',
+    type: 'Developer tool',
     description:
-      'Analisador de linhas de código que percorre arquivos C++ e HPP, usando recursão de diretórios para processar projetos completos em lote.',
-    techs: ['C++', 'Algoritmos', 'Recursão'],
+      'A source lines of code analyzer that traverses C++ and HPP files, using recursive directory traversal to process entire projects in batches.',
+    techs: ['C++', 'Algorithms', 'Recursion'],
     link: 'https://github.com/lucas1noid',
   },
 ]
@@ -34,18 +34,18 @@ export const projects = [
 export const community = [
   {
     title: 'IEEE Computer Society',
-    role: 'Membro Voluntário · Capítulo UFRN',
-    period: 'COMUNIDADE / TECNOLOGIA',
+    role: 'Volunteer Member · UFRN Chapter',
+    period: 'COMMUNITY / TECHNOLOGY',
     description:
-      'Engajamento da comunidade de computação por meio de dinâmicas, organização de eventos e difusão de conhecimento técnico.',
+      'Engaging the computing community through activities, event organization, and sharing technical knowledge.',
   },
   {
     title: 'PotiCode',
-    role: 'Assessor de Marketing',
-    period: 'COMUNICAÇÃO / ESTRATÉGIA',
+    role: 'Marketing Advisor',
+    period: 'COMMUNICATION / STRATEGY',
     description:
-      'Planejamento da comunicação e divulgação do projeto, ampliando o alcance da iniciativa e o envolvimento da comunidade.',
+      'Planning communications and promoting the project, expanding the initiative’s reach and community engagement.',
   },
 ]
 
-export const skills = ['C++', 'Java', 'Spring Boot', 'POO', 'Algoritmos', 'Git', 'Comunidade', 'Lógica']
+export const skills = ['C++', 'Java', 'Spring Boot', 'OOP', 'Algorithms', 'Git', 'Community', 'Logic']

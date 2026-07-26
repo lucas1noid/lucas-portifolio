@@ -1,19 +1,19 @@
-# Portfólio — Lucas Lopes
+# Portfolio — Lucas Lopes
 
-Portfólio em fase experimental construído com React e CSS, sem biblioteca de componentes ou animações.
+An experimental portfolio built with React and CSS, without component or animation libraries.
 
-## Desenvolvimento
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Verificação
+## Validation
 
 ```bash
 npm run lint
 npm run build
 ```
 
-O diretório para publicação é `dist`.
+The deployment directory is `dist`.
