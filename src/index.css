@@ -876,8 +876,9 @@ a:hover .arrow--down {
   display: grid;
   padding-block: clamp(2.5rem, 4vw, 4rem);
   border-top: 1px solid var(--dark-line);
-  grid-template-columns: 0.25fr 0.8fr 1fr;
+  grid-template-columns: 0.25fr 0.9fr 1fr;
   gap: 2rem;
+  align-items: center;
 }
 
 .experience__list article:last-child {
@@ -892,17 +893,42 @@ a:hover .arrow--down {
 }
 
 .experience__list article div > p:first-child {
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   color: #74716e;
 }
 
-.experience__list h3 {
+.experience__logo {
   margin: 0;
-  font: 700 clamp(1.6rem, 3vw, 3rem)/1 var(--display);
+  width: min(100%, 16rem);
+  height: auto;
+  max-height: 6.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.experience__logo img {
+  width: 100%;
+  height: auto;
+  max-height: 6.5rem;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 0.5rem;
+}
+
+.experience__list h3 {
+  margin: 0 0 0.5rem;
+  font: 700 clamp(1.6rem, 3vw, 2.8rem)/1 var(--display);
+  letter-spacing: -0.03em;
 }
 
 .experience__list h4 {
   margin: 0 0 1rem;
+  color: var(--red);
   font: 0.66rem/1.4 var(--mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -916,7 +942,7 @@ a:hover .arrow--down {
   line-height: 1.65;
 }
 
-/* Projects (Com Grid e Borrões) */
+/* Projects */
 .projects {
   background-image:
     linear-gradient(var(--light-grid) 1px, transparent 1px),
@@ -1118,7 +1144,7 @@ a:hover .arrow--down {
   font: 700 clamp(1.25rem, 2.5vw, 2.25rem)/1 var(--display);
 }
 
-/* Skills (Com Grid e Borrões) */
+/* Skills */
 .skills {
   background-image:
     linear-gradient(var(--light-grid) 1px, transparent 1px),
@@ -1700,6 +1726,10 @@ footer div {
   .experience__heading,
   .experience__list article {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience__logo {
+    max-width: 14rem;
   }
 
   .section-heading h2 {

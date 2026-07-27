@@ -273,7 +273,7 @@ function App() {
           <div className="hero__layout">
             <aside className="hero__profile">
               <figure className="hero__photo">
-                <img src="/images/lucas-hero.png" alt="Lucas" />
+                <img src="/images/lucas-retrato.png" alt="Lucas" />
               </figure>
 
               <div className="hero__intro">
@@ -334,7 +334,7 @@ function App() {
               <div className="about__copy" data-reveal>
                 <div className="about__story">
                   <figure className="about__photo about__photo--portrait">
-                    <img src="/images/lucas-retrato.png" alt="Lucas Lopes smiling" />
+                    <img src="/images/lucas-hero.png" alt="Lucas Lopes smiling" />
                   </figure>
 
                   <p className="about__lead">
@@ -363,7 +363,7 @@ function App() {
           </div>
           <div className="section-shell">
             <SectionLabel index="02" light>
-              Beyond code
+              Experience
             </SectionLabel>
 
             <div className="experience__heading" data-reveal>
@@ -377,9 +377,14 @@ function App() {
                   <span>0{index + 1}</span>
                   <div>
                     <p>{item.period}</p>
-                    <h3>{item.title}</h3>
+                    {item.logo && (
+                      <figure className="experience__logo">
+                        <img src={item.logo} alt={`${item.title} logo`} />
+                      </figure>
+                    )}
                   </div>
                   <div>
+                    <h3>{item.title}</h3>
                     <h4>{item.role}</h4>
                     <p>{item.description}</p>
                   </div>

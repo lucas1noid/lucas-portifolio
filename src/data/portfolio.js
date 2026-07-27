@@ -38,6 +38,7 @@ export const community = [
     period: 'COMMUNITY / TECHNOLOGY',
     description:
       'Engaging the computing community through activities, event organization, and sharing technical knowledge.',
+    logo: '/images/ieee-logo.png',
   },
   {
     title: 'PotiCode',
@@ -45,6 +46,15 @@ export const community = [
     period: 'COMMUNICATION / STRATEGY',
     description:
       'Planning communications and promoting the project, expanding the initiative’s reach and community engagement.',
+    logo: '/images/poticode-logo.png',
+  },
+  {
+    title: 'Hackathon do Sol',
+    role: 'Participant · RN Tech Solution (Jun. 2026)',
+    period: 'HACKATHON / INNOVATION',
+    description:
+      'Collaborated with a 4-member multidisciplinary team during a 3-day in-person hackathon. Developed a React web platform integrated with APIs for RN tourism, participated in mentoring sessions, and pitched the solution to an evaluation panel.',
+    logo: '/images/lucas-hackathon-logo.png',
   },
 ]
 
