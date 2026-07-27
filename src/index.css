@@ -218,6 +218,7 @@ button:focus-visible {
 
 .section-shell {
   position: relative;
+  z-index: 1;
   width: min(100%, 1440px);
   margin: auto;
   padding-inline: var(--safe);
@@ -476,7 +477,7 @@ a:hover .arrow--down {
 
 .eyebrow {
   display: flex;
-  justify-between: space-between;
+  justify-content: space-between;
   margin: 0;
   font: 0.75rem/1 var(--mono);
   letter-spacing: 0.12em;
@@ -638,6 +639,19 @@ a:hover .arrow--down {
   top: 16%;
   right: -12vw;
   content: 'BACKGROUND';
+}
+
+.about::after {
+  position: absolute;
+  bottom: 5%;
+  right: -10vw;
+  width: min(50vw, 600px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.2), transparent 70%);
+  filter: blur(40px);
+  content: '';
+  pointer-events: none;
 }
 
 .about__grid {
@@ -808,6 +822,20 @@ a:hover .arrow--down {
   padding-block-end: var(--section-space);
 }
 
+.experience::after {
+  position: absolute;
+  top: 30%;
+  right: -12vw;
+  width: min(55vw, 650px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.22), transparent 70%);
+  filter: blur(45px);
+  content: '';
+  pointer-events: none;
+  animation: drift 11s ease-in-out infinite alternate;
+}
+
 .experience__ghost {
   top: 8%;
   left: -3vw;
@@ -888,7 +916,41 @@ a:hover .arrow--down {
   line-height: 1.65;
 }
 
-/* Projects */
+/* Projects (Com Grid e Borrões) */
+.projects {
+  background-image:
+    linear-gradient(var(--light-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--light-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.projects::before {
+  position: absolute;
+  top: 5%;
+  left: -15vw;
+  width: min(65vw, 800px);
+  aspect-ratio: 1;
+  border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.35), rgba(225, 29, 72, 0.1) 45%, transparent 70%);
+  filter: blur(36px);
+  content: '';
+  pointer-events: none;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+
+.projects::after {
+  position: absolute;
+  bottom: 8%;
+  right: -16vw;
+  width: min(55vw, 700px);
+  aspect-ratio: 1;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.28), rgba(225, 29, 72, 0.08) 40%, transparent 68%);
+  filter: blur(32px);
+  content: '';
+  pointer-events: none;
+}
+
 .section-heading {
   display: grid;
   margin-bottom: clamp(5rem, 10vw, 9rem);
@@ -1056,7 +1118,41 @@ a:hover .arrow--down {
   font: 700 clamp(1.25rem, 2.5vw, 2.25rem)/1 var(--display);
 }
 
-/* Skills Grid */
+/* Skills (Com Grid e Borrões) */
+.skills {
+  background-image:
+    linear-gradient(var(--light-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--light-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.skills::before {
+  position: absolute;
+  top: 10%;
+  right: -18vw;
+  width: min(60vw, 750px);
+  aspect-ratio: 1.1;
+  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.32), rgba(225, 29, 72, 0.08) 42%, transparent 70%);
+  filter: blur(36px);
+  content: '';
+  pointer-events: none;
+  animation: drift 14s ease-in-out infinite alternate-reverse;
+}
+
+.skills::after {
+  position: absolute;
+  bottom: -5vw;
+  left: 10vw;
+  width: min(55vw, 700px);
+  aspect-ratio: 1;
+  border-radius: 35% 65% 55% 45% / 45% 55% 45% 55%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.26), rgba(225, 29, 72, 0.06) 45%, transparent 68%);
+  filter: blur(40px);
+  content: '';
+  pointer-events: none;
+}
+
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
@@ -1148,6 +1244,19 @@ a:hover .arrow--down {
   background: radial-gradient(circle, rgba(225, 29, 72, 0.65), transparent 65%);
   filter: blur(24px);
   content: '';
+}
+
+.contact::after {
+  position: absolute;
+  top: -10vw;
+  left: -15vw;
+  width: min(50vw, 650px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.25), transparent 70%);
+  filter: blur(40px);
+  content: '';
+  pointer-events: none;
 }
 
 .contact__layout {
@@ -1427,11 +1536,17 @@ footer div {
     justify-content: center;
   }
 
+  .hero,
+  .projects,
+  .skills {
+    min-height: auto;
+    background-size: 32px 32px;
+  }
+
   .hero {
     min-height: 780px;
     align-items: flex-start;
     padding-top: 7rem;
-    background-size: 32px 32px;
   }
 
   .hero__wash {
