@@ -48,4 +48,13 @@ export const community = [
   },
 ]
 
-export const skills = ['C++', 'Java', 'Spring Boot', 'OOP', 'Algorithms', 'Git', 'Community', 'Logic']
+export const skills = [
+  { name: 'C++', category: 'Language', icon: '/icons/cpp.svg' },
+  { name: 'Java', category: 'Language', icon: '/icons/java.svg' },
+  { name: 'JavaScript', category: 'Language', icon: '/icons/javascript.svg' },
+  { name: 'React', category: 'Frontend', icon: '/icons/react.svg' },
+  { name: 'Astro', category: 'Frontend', icon: '/icons/astro.svg' },
+  { name: 'HTML5', category: 'Frontend', icon: '/icons/html.svg' },
+  { name: 'CSS3', category: 'Frontend', icon: '/icons/css.svg' },
+  { name: 'Git', category: 'Tools', icon: '/icons/git.svg' },
+]

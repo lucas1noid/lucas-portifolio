@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import { community, projects, skills } from './data/portfolio'
 
 const navigation = [
-  ['01', 'About', '#sobre'],
-  ['02', 'Projects', '#projetos'],
-  ['03', 'Experience', '#atuacao'],
-  ['04', 'Contact', '#contato'],
+  ['01', 'About me', '#about-me'],
+  ['02', 'Experience', '#experience'],
+  ['03', 'Projects', '#projects'],
+  ['04', 'Skills', '#skills'],
+  ['05', 'Contact', '#contact'],
 ]
 
 function Arrow({ direction = 'diagonal' }) {
@@ -117,7 +118,31 @@ function CustomCursor() {
   return <div ref={cursorRef} className="cursor" aria-hidden="true" />
 }
 
-function Header({ open, setOpen }) {
+function SunIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="5" />
+      <line x1="12" y1="1" x2="12" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="23" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="1" y1="12" x2="3" y2="12" />
+      <line x1="21" y1="12" x2="23" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  )
+}
+
+function Header({ open, setOpen, theme, setTheme }) {
   const closeMenu = () => setOpen(false)
 
   useEffect(() => {
@@ -144,17 +169,28 @@ function Header({ open, setOpen }) {
         </video>
       </a>
 
-      <button
-        className="menu-button"
-        type="button"
-        aria-expanded={open}
-        aria-controls="main-navigation"
-        aria-label={open ? 'Close menu' : 'Open menu'}
-        onClick={() => setOpen((current) => !current)}
-      >
-        <span>{open ? 'CLOSE' : 'MENU'}</span>
-        <i aria-hidden="true" />
-      </button>
+      <div className="header__actions">
+        <button
+          type="button"
+          className="theme-toggle-btn"
+          aria-label="Toggle theme"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        </button>
+
+        <button
+          className="menu-button"
+          type="button"
+          aria-expanded={open}
+          aria-controls="main-navigation"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((current) => !current)}
+        >
+          <span>{open ? 'CLOSE' : 'MENU'}</span>
+          <i aria-hidden="true" />
+        </button>
+      </div>
 
       <nav id="main-navigation" className={`navigation ${open ? 'navigation--open' : ''}`} aria-label="Primary">
         {navigation.map(([index, label, href]) => (
@@ -163,6 +199,14 @@ function Header({ open, setOpen }) {
             {label}
           </a>
         ))}
+        <button
+          type="button"
+          className="theme-toggle-btn theme-toggle-btn--desktop"
+          aria-label="Toggle theme"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        </button>
       </nav>
     </header>
   )
@@ -190,6 +234,13 @@ function ProjectVisual({ project, index }) {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [theme, setTheme] = useState(() => window.localStorage.getItem('portfolio-theme') || 'dark')
+
+  useEffect(() => {
+    document.body.classList.remove('theme-dark', 'theme-light')
+    document.body.classList.add(`theme-${theme}`)
+    window.localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -210,7 +261,7 @@ function App() {
     <>
       <LoadingScreen />
       <CustomCursor />
-      <Header open={menuOpen} setOpen={setMenuOpen} />
+      <Header open={menuOpen} setOpen={setMenuOpen} theme={theme} setTheme={setTheme} />
 
       <main>
         <section className="hero" id="inicio">
@@ -219,28 +270,36 @@ function App() {
             05°47&apos;S — 35°12&apos;W
           </div>
 
-          <div className="hero__content">
-            <p className="eyebrow hero__eyebrow">
-              <span>Computer Science</span>
-              <span className="hero__verse">
-                𝔍𝔢𝔰𝔲𝔰 𝔦𝔰 𝔱𝔥𝔢 𝔴𝔞𝔶, 𝔱𝔥𝔢 𝔱𝔯𝔲𝔱𝔥, 𝔞𝔫𝔡 𝔱𝔥𝔢 𝔩𝔦𝔣𝔢.
-                <small>(𝔍𝔫 14:6)</small>
-              </span>
-            </p>
+          <div className="hero__layout">
+            <aside className="hero__profile">
+              <figure className="hero__photo">
+                <img src="/images/lucas-hero.png" alt="Lucas" />
+              </figure>
 
-            <h1 aria-label="Software developer">
-              <span className="hero__word hero__word--red">SOFTWARE</span>
-              <span className="hero__word hero__word--outline">DEVELOPER</span>
-            </h1>
+              <div className="hero__intro">
+                <p>
+                   Hi! I'm <strong>Lucas Lopes</strong>! And this is the portfolio I created to
+                  share a bit more about myself and my work as a programmer.
+                </p>
+                <a className="text-link" href="#projects">
+                  Explore projects <Arrow direction="down" />
+                </a>
+              </div>
+            </aside>
 
-            <div className="hero__intro">
-              <p>
-                Hello! I'm <strong>Lucas Lopes</strong>, and this is the portfolio I created to 
-                share a bit more about myself and my work as a programmer.
+            <div className="hero__content">
+              <p className="eyebrow hero__eyebrow">
+                <span>ℭ𝔬𝔪𝔭𝔲𝔱𝔢𝔯 𝔖𝔠𝔦𝔢𝔫𝔠𝔢</span>
+                <span className="hero__verse">
+                  𝔍𝔢𝔰𝔲𝔰 𝔦𝔰 𝔱𝔥𝔢 𝔴𝔞𝔶, 𝔱𝔥𝔢 𝔱𝔯𝔲𝔱𝔥, 𝔞𝔫𝔡 𝔱𝔥𝔢 𝔩𝔦𝔣𝔢.
+                  <small>(𝔍𝔫 14:6)</small>
+                </span>
               </p>
-              <a className="text-link" href="#projetos">
-                Explore projects <Arrow direction="down" />
-              </a>
+
+              <h1 aria-label="Software developer">
+                <span className="hero__word hero__word--red">SOFTWARE</span>
+                <span className="hero__word hero__word--outline">DEVELOPER</span>
+              </h1>
             </div>
           </div>
 
@@ -252,11 +311,14 @@ function App() {
           <p className="hero__role">DEVELOPER IN TRAINING &amp; DIGITAL ENTHUSIAST</p>
         </section>
 
-        <section className="about dark-section" id="sobre">
+        {/* 01. ABOUT ME */}
+        <section className="about dark-section" id="about-me">
           <div className="section-shell">
-            <SectionLabel index="01" light>
-              About me
-            </SectionLabel>
+            <div className="about__header">
+              <SectionLabel index="01" light>
+                About me
+              </SectionLabel>
+            </div>
 
             <div className="about__grid">
               <div className="about__visual" data-reveal>
@@ -294,15 +356,46 @@ function App() {
           </div>
         </section>
 
-        <section className="projects light-section" id="projetos">
+        {/* 02. EXPERIENCE */}
+        <section className="experience dark-section" id="experience">
+          <div className="experience__ghost" aria-hidden="true">
+            EXPERIENCE
+          </div>
           <div className="section-shell">
-            <SectionLabel index="02">Selected work</SectionLabel>
+            <SectionLabel index="02" light>
+              Beyond code
+            </SectionLabel>
+
+            <div className="experience__heading" data-reveal>
+              <p>TECHNOLOGY IS ALSO ABOUT PEOPLE.</p>
+              <h2>EXPERIENCE</h2>
+            </div>
+
+            <div className="experience__list">
+              {community.map((item, index) => (
+                <article key={item.title} data-reveal>
+                  <span>0{index + 1}</span>
+                  <div>
+                    <p>{item.period}</p>
+                    <h3>{item.title}</h3>
+                  </div>
+                  <div>
+                    <h4>{item.role}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 03. PROJECTS */}
+        <section className="projects light-section" id="projects">
+          <div className="section-shell">
+            <SectionLabel index="03">Selected work</SectionLabel>
 
             <div className="section-heading" data-reveal>
               <h2>PROJECTS</h2>
-              <p>
-                A selection of systems and experiments exploring architecture, logic, and problem-solving.
-              </p>
             </div>
 
             <div className="project-list">
@@ -338,52 +431,37 @@ function App() {
           </div>
         </section>
 
-        <section className="experience dark-section" id="atuacao">
-          <div className="experience__ghost" aria-hidden="true">
-            COMMUNITY
-          </div>
+        {/* 04. SKILLS */}
+        <section className="skills light-section" id="skills">
           <div className="section-shell">
-            <SectionLabel index="03" light>
-              Beyond code
-            </SectionLabel>
+            <SectionLabel index="04">Stack &amp; Tools</SectionLabel>
 
-            <div className="experience__heading" data-reveal>
-              <p>TECHNOLOGY IS ALSO ABOUT PEOPLE.</p>
-              <h2>COMMUNITY &amp; EXPERIENCE</h2>
+            <div className="section-heading" data-reveal>
+              <h2>SKILLS</h2>
+              <p>Technologies and frameworks I work with on a daily basis.</p>
             </div>
 
-            <div className="experience__list">
-              {community.map((item, index) => (
-                <article key={item.title} data-reveal>
-                  <span>0{index + 1}</span>
-                  <div>
-                    <p>{item.period}</p>
-                    <h3>{item.title}</h3>
+            <div className="skills__grid" data-reveal>
+              {skills.map((skill) => (
+                <div key={skill.name} className="skill-card">
+                  <div className="skill-card__visual">
+                    <div className="skill-card__grid-bg" />
+                    <img src={skill.icon} alt={skill.name} className="skill-card__icon" />
                   </div>
-                  <div>
-                    <h4>{item.role}</h4>
-                    <p>{item.description}</p>
+                  <div className="skill-card__info">
+                    <h3>{skill.name}</h3>
+                    {skill.category && <span>{skill.category}</span>}
                   </div>
-                </article>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="toolkit" aria-label="Technologies">
-          <div className="toolkit__track">
-            {[...skills, ...skills].map((skill, index) => (
-              <span key={`${skill}-${index}`}>
-                {skill}
-                <i>✦</i>
-              </span>
-            ))}
-          </div>
-        </section>
-
-        <section className="contact light-section" id="contato">
+        {/* 05. CONTACT */}
+        <section className="contact light-section" id="contact">
           <div className="section-shell">
-            <SectionLabel index="04">Initiate contact</SectionLabel>
+            <SectionLabel index="05">Initiate contact</SectionLabel>
 
             <div className="contact__layout">
               <div className="contact__title" data-reveal>
@@ -394,27 +472,13 @@ function App() {
                   SOMETHING.
                 </h2>
               </div>
-
-              <div className="contact__action" data-reveal>
-                <p>
-                  I&apos;m open to projects, academic collaborations, and conversations about technology, backend development,
-                  and the developer community.
-                </p>
-                <a href="mailto:lucas1noid@gmail.com?subject=Contact%20from%20the%20portfolio">
-                  <span>
-                    Send a message
-                    <small>lucas1noid@gmail.com</small>
-                  </span>
-                  <Arrow />
-                </a>
-              </div>
             </div>
           </div>
         </section>
       </main>
 
       <footer>
-        <a href="#inicio">NOID.SYS</a>
+        <a href="#inicio">NOID</a>
         <p>Lucas Lopes · © {new Date().getFullYear()}</p>
         <div>
           <a href="https://github.com/lucas1noid" target="_blank" rel="noreferrer">
