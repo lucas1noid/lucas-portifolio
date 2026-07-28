@@ -638,7 +638,7 @@ a:hover .arrow--down {
 .about::before {
   top: 16%;
   right: -12vw;
-  content: 'BACKGROUND';
+  content: 'ABOUT ME';
 }
 
 .about::after {
@@ -1257,7 +1257,7 @@ a:hover .arrow--down {
 
 /* Contact */
 .contact {
-  min-height: 90svh;
+  min-height: 100svh;
 }
 
 .contact::before {
@@ -1792,7 +1792,9 @@ footer div {
   }
 
   .contact {
-    min-height: auto;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
   }
 
   .contact__layout {

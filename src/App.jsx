@@ -273,7 +273,7 @@ function App() {
           <div className="hero__layout">
             <aside className="hero__profile">
               <figure className="hero__photo">
-                <img src="/images/lucas-retrato.png" alt="Lucas" />
+                <img src="/images/lucas-hero.png" alt="Lucas" />
               </figure>
 
               <div className="hero__intro">
@@ -303,11 +303,6 @@ function App() {
             </div>
           </div>
 
-          <div className="hero__status">
-            <span className="status-dot" />
-            Available for new connections
-          </div>
-
           <p className="hero__role">DEVELOPER IN TRAINING &amp; DIGITAL ENTHUSIAST</p>
         </section>
 
@@ -334,7 +329,7 @@ function App() {
               <div className="about__copy" data-reveal>
                 <div className="about__story">
                   <figure className="about__photo about__photo--portrait">
-                    <img src="/images/lucas-hero.png" alt="Lucas Lopes smiling" />
+                    <img src="/images/ufrn-img.png" alt="ufrn" />
                   </figure>
 
                   <p className="about__lead">
@@ -342,12 +337,12 @@ function App() {
                   </p>
 
                   <p className="about__body">
-                    I am passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
+                    passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
                   </p>
 
                   <div className="about__gallery">
                     <figure className="about__photo about__photo--hackathon">
-                      <img src="/images/lucas-hackathon.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
+                      <img src="/images/eu-sol-img.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
                     </figure>
                   </div>
                 </div>
@@ -367,7 +362,7 @@ function App() {
             </SectionLabel>
 
             <div className="experience__heading" data-reveal>
-              <p>TECHNOLOGY IS ALSO ABOUT PEOPLE.</p>
+              <p>PROFESSIONAL EXPERIENCE AND EXTRACURRICULAR ACTIVITIES</p>
               <h2>EXPERIENCE</h2>
             </div>
 
