@@ -41,13 +41,13 @@ export const community = [
   {
     title: 'PotiCode - DIMAp',
     role: 'AI/ML Developer and Marketing Advisor · UFRN EJ',
-    period: 'COMMUNICATION / STRATEGY',
+    period: 'BUSINESS / STRATEGY',
     logo: '/images/poticode-logo.png',
   },
   {
     title: 'Hackathon do Sol',
-    role: 'Participant · RN Tech Solution (Jun/2026)',
-    period: 'HACKATHON / INNOVATION',
+    role: 'Participant · Tech Solution FOR RN (Jun/2026)',
+    period: 'SOLUTIONS / INNOVATION',
     logo: '/images/lucas-hackathon-logo.png',
   },
 ]

@@ -319,7 +319,7 @@ function App() {
               {/* Row 1 */}
               <div className="about__row about__row--first">
                 <p className="about__lead">
-                  I am an aspiring software developer currently studying Computer Science at UFRN - DIMAp.
+                  I am an aspiring software developer currently studying Computer Science at DIMAp - UFRN.
                 </p>
                 <div className="about__photos-group about__photos-group--top">
                   <figure className="about__photo about__photo--square">
@@ -330,7 +330,6 @@ function App() {
                   </figure>
                 </div>
               </div>
-
               {/* Row 2 */}
               <div className="about__row about__row--second">
                 <div className="about__photos-group about__photos-group--bottom">
@@ -338,7 +337,7 @@ function App() {
                     <img src="/images/eu-sol-img.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
                   </figure>
                   <figure className="about__photo about__photo--square">
-                    <img src="/images/lucas-gorn-img.png" alt="Lucas Lopes presenting project" loading="lazy" />
+                    <img src="/images/lucas-gorn-img.png" alt="Lucas Lopes in GORN" loading="lazy" />
                   </figure>
                 </div>
                 <p className="about__body">
