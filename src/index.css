@@ -1345,17 +1345,15 @@ a:hover .arrow--down {
   pointer-events: none;
 }
 
-.contact__layout {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: clamp(4rem, 9vw, 10rem);
-  align-items: end;
+.contact__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 6rem);
 }
 
 .contact__title > p {
   width: 15rem;
-  margin: 0 0 clamp(3rem, 6vw, 6rem);
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
   font: 0.6rem/1.5 var(--mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1363,50 +1361,77 @@ a:hover .arrow--down {
 
 .contact__title h2 {
   margin: 0;
-  font: 800 clamp(4.2rem, 10vw, 10rem)/0.72 var(--display);
+  font: 800 clamp(3.5rem, 9.5vw, 9.5rem)/0.75 var(--display);
   letter-spacing: -0.08em;
 }
 
 .contact__title h2 span {
-  display: block;
+  display: inline-block;
   color: var(--red);
-  transform: translateX(6vw);
+  margin-left: 0.2em;
 }
 
-.contact__action > p {
-  margin: 0 0 3rem;
-  color: #504e4a;
-  line-height: 1.65;
+.contact__channels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.contact__action > a {
+.contact__subtitle {
+  margin: 0;
+  color: var(--light-muted);
+  font: 0.65rem/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.contact__card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 1.4rem;
-  border-block: 1px solid;
-  transition: color 0.18s ease, padding 0.18s ease;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--light-line);
+  background: var(--light-surface);
+  transition: border-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
 }
 
-.contact__action > a:hover {
-  padding-inline: 0.6rem;
+.contact__card:hover {
+  border-color: var(--red);
   color: var(--red);
+  transform: translateY(-4px);
 }
 
-.contact__action > a > span {
-  font: 700 1.2rem/1.2 var(--display);
+.contact__card span {
+  display: block;
+  font: 700 1.4rem/1.2 var(--display);
 }
 
-.contact__action small {
+.contact__card small {
   display: block;
   margin-top: 0.35rem;
-  font: 0.52rem/1 var(--mono);
+  color: var(--light-muted);
+  font: 0.58rem/1 var(--mono);
+  letter-spacing: 0.05em;
+  text-transform: none;
 }
 
-.contact__action .arrow {
-  font-size: 1.7rem;
+.contact__card .arrow {
+  font-size: 1.4rem;
 }
 
+@media (max-width: 720px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer Limpo e Direto */
 footer {
   display: flex;
   align-items: center;
@@ -1421,17 +1446,11 @@ footer > a {
   font: 800 1rem/1 var(--display);
 }
 
-footer p,
-footer div {
+footer p {
   margin: 0;
   font: 0.55rem/1 var(--mono);
   letter-spacing: 0.07em;
   text-transform: uppercase;
-}
-
-footer div {
-  display: flex;
-  gap: 1.5rem;
 }
 
 /* Motion */
@@ -1862,24 +1881,15 @@ footer div {
     width: 100%;
   }
 
-  .contact__action > a {
-    min-height: 5rem;
-  }
-
   footer {
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   footer p {
-    order: 3;
-    width: 100%;
-  }
-
-  footer div a {
-    display: inline-flex;
-    min-height: 2.75rem;
-    align-items: center;
+    order: unset;
+    width: auto;
+    text-align: right;
   }
 }
 

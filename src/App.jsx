@@ -461,12 +461,12 @@ function App() {
           </div>
         </section>
 
-        {/* 05. CONTACT */}
+{/* 05. CONTACT */}
         <section className="contact light-section" id="contact">
           <div className="section-shell">
-            <SectionLabel index="05">Initiate contact</SectionLabel>
+            <SectionLabel index="05">contact</SectionLabel>
 
-            <div className="contact__layout">
+            <div className="contact__content">
               <div className="contact__title" data-reveal>
                 <p>Have an idea, a project, or just want to chat?</p>
                 <h2>
@@ -474,6 +474,44 @@ function App() {
                   <span>BUILD</span>
                   SOMETHING.
                 </h2>
+              </div>
+
+              <div className="contact__channels" data-reveal>
+                <p className="contact__subtitle">Feel free to reach out through any of the channels below:</p>
+
+                <div className="contact__grid">
+                  <a href="https://github.com/lucas1noid" target="_blank" rel="noreferrer" className="contact__card">
+                    <div>
+                      <span>GitHub</span>
+                      <small>@lucas1noid</small>
+                    </div>
+                    <Arrow />
+                  </a>
+
+                  <a href="https://www.linkedin.com/in/lucas-lopes-468a58309/" target="_blank" rel="noreferrer" className="contact__card">
+                    <div>
+                      <span>LinkedIn</span>
+                      <small>Connect with me</small>
+                    </div>
+                    <Arrow />
+                  </a>
+
+                  <a href="https://www.instagram.com/lucasgabriel_noid/" target="_blank" rel="noreferrer" className="contact__card">
+                    <div>
+                      <span>Instagram</span>
+                      <small>Follow me</small>
+                    </div>
+                    <Arrow />
+                  </a>
+
+                  <a href="https://mail.google.com/mail/u/0/?fs=1&to=lucas1noid@gmail.com&tf=cm" target="_blank" rel="noreferrer" className="contact__card">
+                    <div>
+                      <span>Email</span>
+                      <small>lucas1noid@gmail.com</small>
+                    </div>
+                    <Arrow />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -483,12 +521,6 @@ function App() {
       <footer>
         <a href="#inicio">NOID</a>
         <p>Lucas Lopes · © {new Date().getFullYear()}</p>
-        <div>
-          <a href="https://github.com/lucas1noid" target="_blank" rel="noreferrer">
-            GitHub <Arrow />
-          </a>
-          <a href="mailto:lucas1noid@gmail.com">Email <Arrow /></a>
-        </div>
       </footer>
     </>
   )
