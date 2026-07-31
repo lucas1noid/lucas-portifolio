@@ -284,7 +284,7 @@ function App() {
 
               <div className="hero__intro">
                 <p>
-                   Hello! I'm <strong>Lucas Lopes</strong>, and this is the portfolio I created to
+                  Hello! I'm <strong>Lucas Lopes</strong>, and this is the portfolio I created to
                   share a bit more about myself and my work as a programmer.
                 </p>
                 <a className="text-link" href="#projects">
@@ -320,7 +320,7 @@ function App() {
                 About me
               </SectionLabel>
             </div>
-            
+
             <div className="about__container" data-reveal>
               {/* Row 1 */}
               <div className="about__row about__row--first">
@@ -448,7 +448,7 @@ function App() {
               {skills.map((skill) => (
                 <div key={skill.name} className="skill-card">
                   <div className="skill-card__visual">
-                    <div className="skill-card__grid-bg" />
+                    {/* A div da grid quadriculada foi removida daqui */}
                     <img src={skill.icon} alt={skill.name} className="skill-card__icon" />
                   </div>
                   <div className="skill-card__info">

@@ -1275,30 +1275,25 @@ a:hover .arrow--down {
   width: 100%;
   aspect-ratio: 1.4;
   margin-bottom: 1rem;
-  background: #111111;
+  background: transparent;
   overflow: hidden;
 }
 
 .skill-card__grid-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 16px 16px;
+  display: none;
 }
 
 .skill-card__icon {
   position: relative;
   z-index: 1;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 5.5rem;
+  height: 5.5rem;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .skill-card:hover .skill-card__icon {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .skill-card__info {
