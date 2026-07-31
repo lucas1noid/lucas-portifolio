@@ -398,7 +398,7 @@ function App() {
             <SectionLabel index="03">Projects</SectionLabel>
 
             <div className="section-heading" data-reveal>
-              <h2>PROJECTS</h2>
+              <h2>FEATURED PROJECTS</h2>
             </div>
 
             <div className="project-list">
