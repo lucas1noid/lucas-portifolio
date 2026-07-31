@@ -577,6 +577,8 @@ a:hover .arrow--down {
   font-size: clamp(1.1rem, 1.65vw, 1.5rem);
   font-weight: 300;
   line-height: 1.45;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero__intro strong {
@@ -1115,9 +1117,17 @@ a:hover .arrow--down {
   position: relative;
   aspect-ratio: 1.1;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--dark-surface);
   color: var(--white);
+  border: 1px solid var(--dark-line);
   clip-path: polygon(10% 0, 100% 0, 100% 83%, 87% 100%, 0 92%, 0 13%);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.project:hover .project-visual,
+.project-visual:hover {
+  border-color: var(--red);
+  transform: translateY(-6px);
 }
 
 .project-visual::before {
@@ -1129,6 +1139,7 @@ a:hover .arrow--down {
   opacity: 0.85;
   transform: translate(-70%, -25%) rotate(24deg);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
 }
 
 .project:hover .project-visual::before {
@@ -1138,18 +1149,20 @@ a:hover .arrow--down {
 .project-visual__grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
+  pointer-events: none;
 }
 
 .project-visual p,
 .project-visual span {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   margin: 0;
-  font: 0.5rem/1 var(--mono);
+  font: 0.55rem/1 var(--mono);
   letter-spacing: 0.1em;
 }
 
@@ -1168,11 +1181,26 @@ a:hover .arrow--down {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   font: 700 clamp(1.5rem, 3vw, 3.3rem)/1 var(--display);
   text-align: center;
   transform: translate(-50%, -50%) rotate(-7deg);
+}
+
+.project-visual__img {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.project:hover .project-visual__img {
+  transform: scale(1.05);
 }
 
 .all-projects {

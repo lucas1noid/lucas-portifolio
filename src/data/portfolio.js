@@ -1,13 +1,14 @@
 export const projects = [
   {
     title: 'MeuPet',
-    short: 'PET / SYSTEM',
-    code: 'SPRING.OBJ_01',
-    type: 'Management system',
+    short: 'PET / MANAGEMENT',
+    code: '',
+    type: 'Management system from pets',
     description:
-      'A pet management system for home and commercial contexts, built with object-oriented programming and designed to scale consistently.',
-    techs: ['Java', 'Spring Boot', 'OOP'],
+      'A pet monitoring and management system designed to facilitate animal care in both domestic and commercial settings.',
+    techs: ['Java', 'Spring Boot', 'MySQL', 'REST API'],
     link: 'https://github.com/lucas1noid',
+    image: '/images/MeuPet-logo.png',
   },
   {
     title: 'Snaze',
@@ -18,6 +19,7 @@ export const projects = [
       'A reinterpretation of the classic Snake game in C++, focused on state machines, game rules, and mindful in-memory resource management.',
     techs: ['C++', 'State Machine', 'Game Logic'],
     link: 'https://github.com/lucas1noid',
+    image: '/images/snaze-preview.png',
   },
   {
     title: 'SLOC Analyzer',
@@ -28,6 +30,7 @@ export const projects = [
       'A source lines of code analyzer that traverses C++ and HPP files, using recursive directory traversal to process entire projects in batches.',
     techs: ['C++', 'Algorithms', 'Recursion'],
     link: 'https://github.com/lucas1noid',
+    image: '/images/sloc-preview.png',
   },
 ]
 

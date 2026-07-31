@@ -226,7 +226,13 @@ function ProjectVisual({ project, index }) {
     <div className={`project-visual project-visual--${index + 1}`} aria-hidden="true">
       <div className="project-visual__grid" />
       <p>{project.code}</p>
-      <strong>{project.short}</strong>
+
+      {project.image ? (
+        <img src={project.image} alt={project.title} className="project-visual__img" />
+      ) : (
+        <strong>{project.short}</strong>
+      )}
+
       <span>0{index + 1} / 03</span>
     </div>
   )
@@ -278,7 +284,7 @@ function App() {
 
               <div className="hero__intro">
                 <p>
-                   Hi! I am <strong>Lucas "noid" Lopes</strong>, and this is the portfolio I created to
+                   Hello! I'm <strong>Lucas Lopes</strong>, and this is the portfolio I created to
                   share a bit more about myself and my work as a programmer.
                 </p>
                 <a className="text-link" href="#projects">
@@ -389,7 +395,7 @@ function App() {
         {/* 03. PROJECTS */}
         <section className="projects light-section" id="projects">
           <div className="section-shell">
-            <SectionLabel index="03">Selected work</SectionLabel>
+            <SectionLabel index="03">Projects</SectionLabel>
 
             <div className="section-heading" data-reveal>
               <h2>PROJECTS</h2>
@@ -412,7 +418,7 @@ function App() {
                       ))}
                     </ul>
                     <a href={project.link} target="_blank" rel="noreferrer">
-                      View on GitHub <Arrow />
+                      Documentation <Arrow />
                     </a>
                   </div>
 
