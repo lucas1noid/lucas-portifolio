@@ -273,12 +273,12 @@ function App() {
           <div className="hero__layout">
             <aside className="hero__profile">
               <figure className="hero__photo">
-                <img src="/images/lucas-hero.png" alt="Lucas" />
+                <img src="/images/lucas-hero.png" alt="Lucas 'noid' Lopes" />
               </figure>
 
               <div className="hero__intro">
                 <p>
-                   Hi! I'm <strong>Lucas Lopes</strong>! And this is the portfolio I created to
+                   Hi! I am <strong>Lucas "noid" Lopes</strong>, and this is the portfolio I created to
                   share a bit more about myself and my work as a programmer.
                 </p>
                 <a className="text-link" href="#projects">
@@ -303,7 +303,7 @@ function App() {
             </div>
           </div>
 
-          <p className="hero__role">DEVELOPER IN TRAINING &amp; DIGITAL ENTHUSIAST</p>
+          <p className="hero__role">DEVELOPER &amp; DIGITAL ENTHUSIAST</p>
         </section>
 
         {/* 01. ABOUT ME */}
@@ -314,38 +314,36 @@ function App() {
                 About me
               </SectionLabel>
             </div>
-
-            <div className="about__grid">
-              <div className="about__visual" data-reveal>
-                <span className="about__orbit about__orbit--one" aria-hidden="true" />
-                <span className="about__orbit about__orbit--two" aria-hidden="true" />
-                <div className="about__core">
-                  <span>L</span>
-                  <span>L</span>
+            
+            <div className="about__container" data-reveal>
+              {/* Row 1 */}
+              <div className="about__row about__row--first">
+                <p className="about__lead">
+                  I am an aspiring software developer currently studying Computer Science at UFRN - DIMAp.
+                </p>
+                <div className="about__photos-group about__photos-group--top">
+                  <figure className="about__photo about__photo--square">
+                    <img src="/images/cs-logo.png" alt="Computer Science UFRN Illustration" />
+                  </figure>
+                  <figure className="about__photo about__photo--top-img">
+                    <img src="/images/ufrn-img.png" alt="UFRN" />
+                  </figure>
                 </div>
-                <p>LOGIC / SYSTEMS / PEOPLE</p>
               </div>
 
-              <div className="about__copy" data-reveal>
-                <div className="about__story">
-                  <figure className="about__photo about__photo--portrait">
-                    <img src="/images/ufrn-img.png" alt="ufrn" />
+              {/* Row 2 */}
+              <div className="about__row about__row--second">
+                <div className="about__photos-group about__photos-group--bottom">
+                  <figure className="about__photo about__photo--bottom-img">
+                    <img src="/images/eu-sol-img.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
                   </figure>
-
-                  <p className="about__lead">
-                    I am an aspiring software developer currently studying Computer Science at UFRN - DIMAp.
-                  </p>
-
-                  <p className="about__body">
-                    passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
-                  </p>
-
-                  <div className="about__gallery">
-                    <figure className="about__photo about__photo--hackathon">
-                      <img src="/images/eu-sol-img.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
-                    </figure>
-                  </div>
+                  <figure className="about__photo about__photo--square">
+                    <img src="/images/lucas-gorn-img.png" alt="Lucas Lopes presenting project" loading="lazy" />
+                  </figure>
                 </div>
+                <p className="about__body">
+                  Passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
+                </p>
               </div>
             </div>
           </div>
@@ -362,7 +360,7 @@ function App() {
             </SectionLabel>
 
             <div className="experience__heading" data-reveal>
-              <p>PROFESSIONAL EXPERIENCE AND EXTRACURRICULAR ACTIVITIES</p>
+              <p>NOTORIOUS PROFESSIONAL EXPERIENCE AND EXTRACURRICULAR ACTIVITIES</p>
               <h2>EXPERIENCE</h2>
             </div>
 
@@ -438,7 +436,7 @@ function App() {
 
             <div className="section-heading" data-reveal>
               <h2>SKILLS</h2>
-              <p>Technologies and frameworks I work with on a daily basis.</p>
+              <p>Technologies and frameworks I have already developed with.</p>
             </div>
 
             <div className="skills__grid" data-reveal>

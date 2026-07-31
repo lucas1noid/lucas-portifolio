@@ -261,9 +261,8 @@ button:focus-visible {
 
 .about__header {
   display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: clamp(3.5rem, 7vw, 7rem);
+  justify-content: flex-start;
+  margin-bottom: clamp(3rem, 5vw, 5rem);
 }
 
 .about__header .section-label {
@@ -442,33 +441,63 @@ a:hover .arrow--down {
   justify-self: end;
 }
 
+/* Foto do Hero com Efeito LED Giratório */
 .hero__photo {
   position: relative;
   margin: 0;
+  padding: 3px;
   aspect-ratio: 1.0;
   overflow: hidden;
   border-radius: clamp(1rem, 2vw, 1.75rem);
+  background: rgba(255, 255, 255, 0.08);
   box-shadow:
     0 1rem 2.5rem rgba(224, 0, 0, 0.16),
-    0 0 clamp(2rem, 4vw, 4rem) rgba(255, 0, 55, 0.5);
+    0 0 clamp(2rem, 4vw, 4rem) rgba(255, 0, 55, 0.3);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, padding 0.3s ease;
 }
 
-.hero__photo::after {
+.hero__photo::before {
   position: absolute;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: inherit;
+  inset: -150%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 70%,
+    var(--red) 88%,
+    #ff4d6d 95%,
+    transparent 100%
+  );
   content: '';
-  pointer-events: none;
+  animation: ledRotate 4s linear infinite;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
 }
 
 .hero__photo img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   image-orientation: from-image;
   object-fit: cover;
   object-position: center 56%;
+  border-radius: calc(clamp(1rem, 2vw, 1.75rem) - 2px);
+  background: #171717;
+}
+
+.hero__photo:hover {
+  transform: scale(1.03);
+  padding: 5px;
+  box-shadow:
+    0 1.2rem 3rem rgba(225, 29, 72, 0.28),
+    0 0 clamp(2.5rem, 5vw, 5rem) rgba(255, 0, 55, 0.5);
+}
+
+.hero__photo:hover::before {
+  opacity: 1;
+  animation-duration: 2.5s;
 }
 
 .hero__content {
@@ -538,7 +567,7 @@ a:hover .arrow--down {
 
 .hero__intro {
   display: grid;
-  gap: 1.75rem;
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
@@ -620,9 +649,10 @@ a:hover .arrow--down {
 }
 
 .about {
-  display: grid;
-  min-height: 100svh;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  min-height: 100svh;
   scroll-margin-top: -5rem;
 }
 
@@ -636,182 +666,153 @@ a:hover .arrow--down {
 }
 
 .about::before {
-  top: 16%;
-  right: -12vw;
+  top: 8%;
+  right: -5vw;
   content: 'ABOUT ME';
 }
 
 .about::after {
   position: absolute;
   bottom: 5%;
-  right: -10vw;
-  width: min(50vw, 600px);
+  right: 50%;
+  transform: translateX(50%);
+  width: min(60vw, 700px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.2), transparent 70%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.15), transparent 70%);
+  filter: blur(50px);
   content: '';
   pointer-events: none;
 }
 
-.about__grid {
+.about__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 8rem);
+}
+
+.about__row {
   display: grid;
-  grid-template-columns: minmax(17rem, 0.8fr) 1.35fr;
-  gap: clamp(4rem, 10vw, 10rem);
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
   align-items: center;
 }
 
-.about__visual {
-  position: relative;
-  width: min(100%, 480px);
-  aspect-ratio: 1;
-  overflow: hidden;
-  border: 1px solid var(--dark-line);
-  background:
-    linear-gradient(var(--dark-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--dark-line) 1px, transparent 1px),
-    #111;
-  background-size: 36px 36px;
-  clip-path: polygon(14% 0, 88% 0, 100% 30%, 91% 87%, 65% 100%, 12% 88%, 0 54%);
+.about__row--second {
+  grid-template-columns: 1.25fr 0.75fr;
 }
 
-.about__visual::before {
-  position: absolute;
-  inset: 14%;
-  border: 1px solid var(--red);
-  content: '';
-  clip-path: polygon(50% 0, 100% 24%, 82% 100%, 10% 87%, 0 30%);
-  animation: spin 18s linear infinite;
-}
-
-.about__orbit {
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-}
-
-.about__orbit--one {
-  inset: 20% 8%;
-  transform: rotate(35deg);
-}
-
-.about__orbit--two {
-  inset: 8% 30%;
-  transform: rotate(-28deg);
-}
-
-.about__core {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  color: var(--white);
-  font: 800 clamp(4rem, 9vw, 8rem)/1 var(--display);
-  letter-spacing: -0.35em;
-  grid-template-columns: auto auto;
-  transform: translateX(-0.16em);
-}
-
-.about__core span:last-child {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--red);
-}
-
-.about__visual > p {
-  position: absolute;
-  right: 8%;
-  bottom: 8%;
-  margin: 0;
-  color: #aaa;
-  font: 0.52rem/1 var(--mono);
-  letter-spacing: 0.1em;
-}
-
-.kicker {
-  margin: 0 0 1.5rem;
-  color: var(--red);
-  font: 0.62rem/1 var(--mono);
-  letter-spacing: 0.13em;
-}
-
-.about__story {
-  display: grid;
-  grid-template-areas:
-    'portrait lead'
-    'body gallery';
-  grid-template-columns: minmax(13.2rem, 1.15fr) minmax(11rem, 0.9fr);
-  gap: clamp(1.65rem, 3.3vw, 3.025rem);
+.about__photos-group {
+  display: flex;
   align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
 }
 
+.about__photos-group--top {
+  height: clamp(11rem, 18vw, 15rem);
+}
+
+.about__photos-group--bottom {
+  height: clamp(11rem, 18vw, 15rem);
+}
+
+.about__row--first .about__photos-group {
+  justify-content: flex-end;
+}
+
+.about__row--second .about__photos-group {
+  justify-content: flex-start;
+}
+
+/* LED Border FX */
 .about__photo {
   position: relative;
   margin: 0;
-  overflow: hidden;
-  border: 1px solid var(--dark-line);
+  padding: 3px;
   border-radius: clamp(1rem, 2vw, 1.75rem);
-  background: #171717;
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, padding 0.3s ease;
 }
 
-.about__photo::after {
+.about__photo::before {
   position: absolute;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: inherit;
+  inset: -150%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 70%,
+    var(--red) 88%,
+    #ff4d6d 95%,
+    transparent 100%
+  );
   content: '';
-  pointer-events: none;
+  animation: ledRotate 4s linear infinite;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
 }
 
 .about__photo img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: calc(clamp(1rem, 2vw, 1.75rem) - 2px);
+  background: #171717;
 }
 
-.about__photo--portrait {
-  grid-area: portrait;
-  width: min(100%, clamp(13.2rem, 19.8vw, 15.4rem));
-  aspect-ratio: 1.18;
-  justify-self: center;
+.about__photo:hover {
+  transform: scale(1.03);
+  padding: 5px;
+  box-shadow: 0 1.2rem 3rem rgba(225, 29, 72, 0.28);
+}
+
+.about__photo:hover::before {
+  opacity: 1;
+  animation-duration: 2.5s;
+}
+
+/* Fotos quadradas das ilustrações/fotos verticais */
+.about__photo--square {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  width: auto;
+}
+
+/* Fotos deitadas (landscape) */
+.about__photo--top-img,
+.about__photo--bottom-img {
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  width: auto;
+}
+
+/* Justificação elegante com maior espaçamento entre palavras */
+.about__lead,
+.about__body {
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .about__lead {
-  grid-area: lead;
-  margin: 0;
   color: var(--dark-content);
-  font-size: clamp(1.1rem, 1.6vw, 1.375rem);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
   font-weight: 600;
   line-height: 1.5;
-  text-align: center;
 }
 
 .about__body {
-  grid-area: body;
-  width: min(100%, 17.6rem);
-  margin: 0;
-  color: var(--dark-content);
-  font-size: clamp(1.1rem, 1.6vw, 1.375rem);
-  font-weight: 600;
-  line-height: 1.5;
-  justify-self: center;
-  text-align: center;
-}
-
-.about__gallery {
-  display: grid;
-  width: min(100%, clamp(13.2rem, 19.8vw, 15.4rem));
-  grid-area: gallery;
-  justify-self: center;
-  align-items: end;
-}
-
-.about__photo--hackathon {
-  aspect-ratio: 1.18;
-  width: 100%;
-  justify-self: end;
+  color: var(--light-muted);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.75;
 }
 
 /* Experience */
@@ -847,10 +848,11 @@ a:hover .arrow--down {
 .experience__heading {
   position: relative;
   display: grid;
-  margin-bottom: clamp(3rem, 6vw, 6rem);
+  margin: 0 auto clamp(3rem, 6vw, 6rem);
   grid-template-columns: 0.6fr 1.4fr;
   gap: 4rem;
   align-items: end;
+  width: min(100%, 90rem);
 }
 
 .experience__heading > p {
@@ -869,7 +871,8 @@ a:hover .arrow--down {
 
 .experience__list {
   position: relative;
-  margin-left: 17%;
+  width: min(100%, 90rem);
+  margin: 0 auto;
 }
 
 .experience__list article {
@@ -897,27 +900,61 @@ a:hover .arrow--down {
   color: #74716e;
 }
 
+/* Padronização Completa das Logos de Experiência com LED */
 .experience__logo {
+  position: relative;
   margin: 0;
-  width: min(100%, 16rem);
-  height: auto;
-  max-height: 6.5rem;
-  padding: 0;
-  background: transparent;
-  border: none;
+  padding: 3px;
+  width: min(100%, 18rem);
+  aspect-ratio: 16 / 9;
+  border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
+  background: rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   overflow: hidden;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, padding 0.3s ease;
+}
+
+.experience__logo::before {
+  position: absolute;
+  inset: -150%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 70%,
+    var(--red) 88%,
+    #ff4d6d 95%,
+    transparent 100%
+  );
+  content: '';
+  animation: ledRotate 4s linear infinite;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
 }
 
 .experience__logo img {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: auto;
-  max-height: 6.5rem;
-  object-fit: contain;
-  object-position: left center;
-  border-radius: 0.5rem;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: calc(clamp(0.75rem, 1.5vw, 1.25rem) - 2px);
+  background: #171717;
+}
+
+.experience__logo:hover {
+  transform: scale(1.03);
+  padding: 5px;
+  box-shadow: 0 1.2rem 3rem rgba(225, 29, 72, 0.28);
+}
+
+.experience__logo:hover::before {
+  opacity: 1;
+  animation-duration: 2.5s;
 }
 
 .experience__list h3 {
@@ -1375,6 +1412,15 @@ footer div {
 }
 
 /* Motion */
+@keyframes ledRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes drift {
   to {
     border-radius: 38% 62% 35% 65% / 61% 36% 64% 39%;
@@ -1405,14 +1451,21 @@ footer div {
     gap: clamp(2rem, 4vw, 3rem);
   }
 
-  .about__grid {
-    grid-template-columns: 0.8fr 1fr;
-    gap: 3rem;
+  .about__row,
+  .about__row--second {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
-  .about__story {
-    grid-template-columns: minmax(9.9rem, 1fr) minmax(8.8rem, 0.8fr);
-    gap: 1.65rem;
+  .about__photos-group {
+    justify-content: center !important;
+    height: auto !important;
+    order: -1;
+  }
+
+  .about__lead,
+  .about__body {
+    text-align: justify;
   }
 
   .section-heading {
@@ -1683,44 +1736,14 @@ footer div {
     display: none;
   }
 
-  .about__grid {
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-    gap: 3.5rem;
+  .about__photos-group {
+    flex-direction: column;
     width: 100%;
-    max-width: 100%;
   }
 
-  .about__visual {
-    width: min(88%, 340px);
-    margin: 0 auto;
-  }
-
-  .about__story {
-    grid-template-areas:
-      'portrait'
-      'lead'
-      'body'
-      'gallery';
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-    justify-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .about__photo--portrait,
-  .about__photo--hackathon,
-  .about__gallery {
-    justify-self: center;
-    margin: 0 auto;
-  }
-
-  .about__lead,
-  .about__body {
-    width: 100%;
-    text-align: center;
+  .about__photo {
+    width: 100% !important;
+    height: auto !important;
   }
 
   .experience__heading,
@@ -1729,7 +1752,8 @@ footer div {
   }
 
   .experience__logo {
-    max-width: 14rem;
+    width: 100% !important;
+    max-width: 18rem;
   }
 
   .section-heading h2 {
