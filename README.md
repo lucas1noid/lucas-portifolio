@@ -1,5 +1,5 @@
 # Portfolio — Lucas Lopes
-![img_preview](public/images/preview-img.png)
+![img_preview](public/noid-logo-ani-sf.gif)
 
 
 ## Build
