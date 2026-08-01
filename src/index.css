@@ -26,12 +26,9 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
+html, body, #root {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
   overflow-x: clip;
 }
 
@@ -72,10 +69,7 @@ body.theme-dark {
   --bg-text-color: rgba(255, 255, 255, 0.04);
 }
 
-body.menu-open {
-  overflow: hidden;
-}
-
+body.menu-open,
 body.is-loading {
   overflow: hidden;
 }
@@ -191,8 +185,7 @@ body.is-loading {
   mix-blend-mode: difference;
 }
 
-a,
-button {
+a, button {
   color: inherit;
   font: inherit;
 }
@@ -322,6 +315,8 @@ a:hover .arrow--down {
 
 .navigation small {
   color: var(--red);
+  margin-right: 0.35rem;
+  font-size: 0.52rem;
 }
 
 .header__actions {
@@ -382,11 +377,6 @@ a:hover .arrow--down {
   transform-origin: left;
 }
 
-.navigation small {
-  margin-right: 0.35rem;
-  font-size: 0.52rem;
-}
-
 .menu-button {
   display: none;
 }
@@ -441,7 +431,6 @@ a:hover .arrow--down {
   justify-self: end;
 }
 
-/* Foto do Hero com Efeito LED Giratório Permanente */
 .hero__photo {
   position: relative;
   margin: 0;
@@ -456,7 +445,8 @@ a:hover .arrow--down {
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, padding 0.3s ease;
 }
 
-.hero__photo::before {
+.hero__photo::before,
+.about__photo::before {
   position: absolute;
   inset: -150%;
   z-index: 0;
@@ -470,21 +460,28 @@ a:hover .arrow--down {
   );
   content: '';
   animation: ledRotate 4s linear infinite;
-  opacity: 0.85;
   transition: opacity 0.3s ease;
 }
 
-.hero__photo img {
+.hero__photo::before {
+  opacity: 0.85;
+}
+
+.hero__photo img,
+.about__photo img {
   position: relative;
   z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
-  image-orientation: from-image;
   object-fit: cover;
-  object-position: center 56%;
   border-radius: calc(clamp(1rem, 2vw, 1.75rem) - 2px);
   background: #171717;
+}
+
+.hero__photo img {
+  image-orientation: from-image;
+  object-position: center 56%;
 }
 
 .hero__photo:hover {
@@ -578,7 +575,6 @@ a:hover .arrow--down {
   font-weight: 300;
   line-height: 1.45;
   text-align: justify;
-  text-justify: inter-word;
 }
 
 .hero__intro strong {
@@ -602,7 +598,6 @@ a:hover .arrow--down {
   text-transform: uppercase;
 }
 
-.hero__status,
 .hero__technical,
 .hero__role {
   position: absolute;
@@ -618,26 +613,10 @@ a:hover .arrow--down {
   writing-mode: vertical-rl;
 }
 
-.hero__status {
-  bottom: 2rem;
-  left: var(--safe);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .hero__role {
   right: var(--safe);
   bottom: 2rem;
   margin: 0;
-}
-
-.status-dot {
-  width: 7px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--red);
-  animation: pulse 1.8s ease infinite;
 }
 
 /* About */
@@ -710,13 +689,6 @@ a:hover .arrow--down {
   align-items: center;
   gap: clamp(1rem, 2vw, 2rem);
   width: 100%;
-}
-
-.about__photos-group--top {
-  height: clamp(11rem, 18vw, 15rem);
-}
-
-.about__photos-group--bottom {
   height: clamp(11rem, 18vw, 15rem);
 }
 
@@ -728,7 +700,6 @@ a:hover .arrow--down {
   justify-content: flex-start;
 }
 
-/* About FX - LED visível APENAS no Hover */
 .about__photo {
   position: relative;
   margin: 0;
@@ -741,32 +712,7 @@ a:hover .arrow--down {
 }
 
 .about__photo::before {
-  position: absolute;
-  inset: -150%;
-  z-index: 0;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 70%,
-    var(--red) 88%,
-    #ff4d6d 95%,
-    transparent 100%
-  );
-  content: '';
-  animation: ledRotate 4s linear infinite;
   opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.about__photo img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: calc(clamp(1rem, 2vw, 1.75rem) - 2px);
-  background: #171717;
 }
 
 .about__photo:hover {
@@ -780,14 +726,12 @@ a:hover .arrow--down {
   animation-duration: 2.5s;
 }
 
-/* Fotos quadradas das ilustrações/fotos verticais */
 .about__photo--square {
   height: 100%;
   aspect-ratio: 1 / 1;
   width: auto;
 }
 
-/* Fotos deitadas (landscape) */
 .about__photo--top-img,
 .about__photo--bottom-img {
   height: 100%;
@@ -799,7 +743,6 @@ a:hover .arrow--down {
 .about__body {
   margin: 0;
   text-align: justify;
-  text-justify: inter-word;
 }
 
 .about__lead {
@@ -843,7 +786,6 @@ a:hover .arrow--down {
   left: -3vw;
   color: var(--bg-text-color);
   -webkit-text-stroke: 1px currentColor;
-  transition: color 0.3s ease;
 }
 
 .experience__heading {
@@ -901,7 +843,6 @@ a:hover .arrow--down {
   color: #74716e;
 }
 
-/* Logos de Experiência (Sem traçado vermelho e reage apenas ao hover) */
 .experience__logo {
   position: relative;
   margin: 0;
@@ -957,7 +898,8 @@ a:hover .arrow--down {
 }
 
 /* Projects */
-.projects {
+.projects,
+.skills {
   background-image:
     linear-gradient(var(--light-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--light-grid) 1px, transparent 1px);
@@ -1185,13 +1127,6 @@ a:hover .arrow--down {
 }
 
 /* Skills */
-.skills {
-  background-image:
-    linear-gradient(var(--light-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--light-grid) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
 .skills::before {
   position: absolute;
   top: 10%;
@@ -1252,10 +1187,6 @@ a:hover .arrow--down {
   margin-bottom: 1rem;
   background: transparent;
   overflow: hidden;
-}
-
-.skill-card__grid-bg {
-  display: none;
 }
 
 .skill-card__icon {
@@ -1442,12 +1373,8 @@ footer p {
 
 /* Motion */
 @keyframes ledRotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes drift {
@@ -1464,16 +1391,10 @@ footer p {
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media (max-width: 960px) {
-  .section-heading,
-  .contact__layout {
+  .section-heading {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .hero__layout {
@@ -1492,15 +1413,6 @@ footer p {
     order: -1;
   }
 
-  .about__lead,
-  .about__body {
-    text-align: justify;
-  }
-
-  .section-heading {
-    gap: 2rem;
-  }
-
   .project {
     grid-template-columns: 0.25fr 1fr;
   }
@@ -1508,11 +1420,6 @@ footer p {
   .project-visual {
     width: min(100%, 34rem);
     grid-column: 2;
-  }
-
-  .contact__action {
-    width: min(100%, 34rem);
-    margin-left: auto;
   }
 }
 
@@ -1836,10 +1743,6 @@ footer p {
     word-break: break-word;
   }
 
-  .experience__list {
-    margin-left: 0;
-  }
-
   .experience__list article {
     gap: 1.5rem;
   }
@@ -1850,10 +1753,6 @@ footer p {
     align-items: center;
   }
 
-  .contact__layout {
-    gap: 5rem;
-  }
-
   .contact__title h2 {
     font-size: clamp(2.4rem, 11vw, 4.5rem);
     line-height: 0.85;
@@ -1862,10 +1761,6 @@ footer p {
 
   .contact__title h2 span {
     transform: none;
-  }
-
-  .contact__action {
-    width: 100%;
   }
 
   footer {

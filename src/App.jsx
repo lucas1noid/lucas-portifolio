@@ -461,7 +461,7 @@ function App() {
         </section>
 
         {/* 05. CONTACT */}
-        <section className="contact light-section" id="contact">
+        <section className="contact dark-section" id="contact">
           <div className="section-shell">
             <SectionLabel index="05">contact</SectionLabel>
 
