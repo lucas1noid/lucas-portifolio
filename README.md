@@ -1,5 +1,5 @@
 # Portfolio — Lucas Lopes
-![img_won](docs/preview-img.png)
+![img_preview](images/preview-img.png)
 
 
 ## Build
