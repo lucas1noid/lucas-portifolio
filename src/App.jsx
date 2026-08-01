@@ -448,7 +448,6 @@ function App() {
               {skills.map((skill) => (
                 <div key={skill.name} className="skill-card">
                   <div className="skill-card__visual">
-                    {/* A div da grid quadriculada foi removida daqui */}
                     <img src={skill.icon} alt={skill.name} className="skill-card__icon" />
                   </div>
                   <div className="skill-card__info">
@@ -461,7 +460,7 @@ function App() {
           </div>
         </section>
 
-{/* 05. CONTACT */}
+        {/* 05. CONTACT */}
         <section className="contact light-section" id="contact">
           <div className="section-shell">
             <SectionLabel index="05">contact</SectionLabel>

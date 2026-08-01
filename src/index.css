@@ -441,7 +441,7 @@ a:hover .arrow--down {
   justify-self: end;
 }
 
-/* Foto do Hero com Efeito LED Giratório */
+/* Foto do Hero com Efeito LED Giratório Permanente */
 .hero__photo {
   position: relative;
   margin: 0;
@@ -728,7 +728,7 @@ a:hover .arrow--down {
   justify-content: flex-start;
 }
 
-/* LED Border FX */
+/* About FX - LED visível APENAS no Hover */
 .about__photo {
   position: relative;
   margin: 0;
@@ -754,7 +754,7 @@ a:hover .arrow--down {
   );
   content: '';
   animation: ledRotate 4s linear infinite;
-  opacity: 0.85;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -795,7 +795,6 @@ a:hover .arrow--down {
   width: auto;
 }
 
-/* Justificação elegante com maior espaçamento entre palavras */
 .about__lead,
 .about__body {
   margin: 0;
@@ -902,39 +901,21 @@ a:hover .arrow--down {
   color: #74716e;
 }
 
-/* Padronização Completa das Logos de Experiência com LED */
+/* Logos de Experiência (Sem traçado vermelho e reage apenas ao hover) */
 .experience__logo {
   position: relative;
   margin: 0;
-  padding: 3px;
+  padding: 0;
   width: min(100%, 18rem);
   aspect-ratio: 16 / 9;
   border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, padding 0.3s ease;
-}
-
-.experience__logo::before {
-  position: absolute;
-  inset: -150%;
-  z-index: 0;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 70%,
-    var(--red) 88%,
-    #ff4d6d 95%,
-    transparent 100%
-  );
-  content: '';
-  animation: ledRotate 4s linear infinite;
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
 }
 
 .experience__logo img {
@@ -944,19 +925,13 @@ a:hover .arrow--down {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: calc(clamp(0.75rem, 1.5vw, 1.25rem) - 2px);
+  border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
   background: #171717;
 }
 
 .experience__logo:hover {
   transform: scale(1.03);
-  padding: 5px;
-  box-shadow: 0 1.2rem 3rem rgba(225, 29, 72, 0.28);
-}
-
-.experience__logo:hover::before {
-  opacity: 1;
-  animation-duration: 2.5s;
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.6);
 }
 
 .experience__list h3 {
@@ -1431,7 +1406,7 @@ a:hover .arrow--down {
   }
 }
 
-/* Footer Limpo e Direto */
+/* Footer */
 footer {
   display: flex;
   align-items: center;

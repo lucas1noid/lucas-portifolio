@@ -6,7 +6,7 @@ export const projects = [
     type: 'Active Development',
     description:
       'A pet monitoring and management system designed to facilitate pet care in both home and commercial settings. An application initially designed for mobile devices.',
-    techs: ['Java', 'Spring Boot', 'MySQL', 'REST API'],
+    techs: ['Java', 'Spring Boot', 'PostgreSQL', 'H2 Database', 'Android Studio'],
     link: 'https://github.com/rafael1109-moura/MeuPet',
     image: '/images/MeuPet-logo.png',
   },
