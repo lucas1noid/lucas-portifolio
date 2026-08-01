@@ -302,7 +302,7 @@ function App() {
                 </span>
               </p>
 
-              <h1 aria-label="Software developer">
+              <h1 aria-label="Software developer" translate="no" className="notranslate">
                 <span className="hero__word hero__word--red">SOFTWARE</span>
                 <span className="hero__word hero__word--outline">DEVELOPER</span>
               </h1>

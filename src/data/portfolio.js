@@ -38,7 +38,7 @@ export const projects = [
     code: 'PC',
     type: 'Concluded',
     description:
-      'This portfolio was built using React, a modern frontend framework. It showcases my projects, skills, and community involvement in a stylish and responsive design.',
+      'This portfolio was built using React. It showcases my projects, skills, and community involvement in a stylish and responsive design.',
     techs: ['React', 'JavaScript', 'HTML5', 'CSS3'],
     link: 'https://github.com/lucas1noid/lucas-portifolio',
     image: '/images/noid-logo.png',
