@@ -437,11 +437,11 @@ function App() {
         {/* 04. SKILLS */}
         <section className="skills light-section" id="skills">
           <div className="section-shell">
-            <SectionLabel index="04">Stack &amp; Tools</SectionLabel>
+            <SectionLabel index="04">skills</SectionLabel>
 
             <div className="section-heading" data-reveal>
               <h2>SKILLS</h2>
-              <p>Technologies and frameworks I have already developed with.</p>
+              <p>Technologies I have already developed with.</p>
             </div>
 
             <div className="skills__grid" data-reveal>
