@@ -495,14 +495,6 @@ function App() {
                     <Arrow />
                   </a>
 
-                  <a href="https://www.instagram.com/lucasgabriel_noid/" target="_blank" rel="noreferrer" className="contact__card">
-                    <div>
-                      <span>Instagram</span>
-                      <small>Follow me</small>
-                    </div>
-                    <Arrow />
-                  </a>
-
                   <a href="https://mail.google.com/mail/u/0/?fs=1&to=lucas1noid@gmail.com&tf=cm" target="_blank" rel="noreferrer" className="contact__card">
                     <div>
                       <span>Email</span>
