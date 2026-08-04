@@ -48,19 +48,19 @@ export const projects = [
 export const community = [
   {
     title: 'IEEE - Computer Society',
-    role: 'Volunteer Member of CS/IEEE · UFRN Chapter',
+    role: 'Selected volunteer member of CS/IEEE · Chapter - UFRN',
     period: 'COMMUNITY / TECHNOLOGY',
     logo: '/images/ieee-logo.png',
   },
   {
     title: 'PotiCode - DIMAp',
-    role: 'AI/ML Developer and Marketing Advisor · UFRN EJ',
+    role: 'AI/ML Developer and Marketing Advisor · Junior Enterprise - UFRN',
     period: 'BUSINESS / STRATEGY',
     logo: '/images/poticode-logo.png',
   },
   {
     title: 'Hackathon do Sol',
-    role: 'Participant · Tech Solution FOR RN (Jun/2026)',
+    role: 'Participant · Tech Solution for Rio Grande do Norte (Jun/2026)',
     period: 'SOLUTIONS / INNOVATION',
     logo: '/images/lucas-hackathon-logo.png',
   },

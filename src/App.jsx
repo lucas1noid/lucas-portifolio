@@ -279,7 +279,7 @@ function App() {
           <div className="hero__layout">
             <aside className="hero__profile">
               <figure className="hero__photo">
-                <img src="/images/lucas-hero.png" alt="Lucas 'noid' Lopes" />
+                <img src="/images/lucas-hero.png" alt="Lucas Lopes" />
               </figure>
 
               <div className="hero__intro">
@@ -329,7 +329,7 @@ function App() {
                 </p>
                 <div className="about__photos-group about__photos-group--top">
                   <figure className="about__photo about__photo--square">
-                    <img src="/images/cs-logo.png" alt="Computer Science UFRN Illustration" />
+                    <img src="/images/cs-logo.png" alt="Computer Society" />
                   </figure>
                   <figure className="about__photo about__photo--top-img">
                     <img src="/images/ufrn-img.png" alt="UFRN" />
@@ -340,10 +340,10 @@ function App() {
               <div className="about__row about__row--second">
                 <div className="about__photos-group about__photos-group--bottom">
                   <figure className="about__photo about__photo--bottom-img">
-                    <img src="/images/eu-sol-img.png" alt="Lucas Lopes at Hackathon do Sol" loading="lazy" />
+                    <img src="/images/eu-sol-img.png" alt="Lucas at Hackathon do Sol" loading="lazy" />
                   </figure>
                   <figure className="about__photo about__photo--square">
-                    <img src="/images/lucas-gorn-img.png" alt="Lucas Lopes in GORN" loading="lazy" />
+                    <img src="/images/lucas-gorn-img.png" alt="Lucas in GORN" loading="lazy" />
                   </figure>
                 </div>
                 <p className="about__body">
@@ -382,7 +382,9 @@ function App() {
                     )}
                   </div>
                   <div>
-                    <h3>{item.title}</h3>
+                    <h3 translate="no" className="notranslate">
+                      {item.title}
+                    </h3>
                     <h4>{item.role}</h4>
                     <p>{item.description}</p>
                   </div>
@@ -410,7 +412,9 @@ function App() {
                   </div>
 
                   <div className="project__copy">
-                    <h3>{project.title}</h3>
+                    <h3 translate="no" className="notranslate">
+                      {project.title}
+                    </h3>
                     <p>{project.description}</p>
                     <ul aria-label={`Technologies used in ${project.title}`}>
                       {project.techs.map((tech) => (
@@ -451,7 +455,9 @@ function App() {
                     <img src={skill.icon} alt={skill.name} className="skill-card__icon" />
                   </div>
                   <div className="skill-card__info">
-                    <h3>{skill.name}</h3>
+                    <h3 translate="no" className="notranslate">
+                      {skill.name}
+                    </h3>
                     {skill.category && <span>{skill.category}</span>}
                   </div>
                 </div>
