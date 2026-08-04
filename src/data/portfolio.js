@@ -78,4 +78,5 @@ export const skills = [
   { name: 'Spring boot', category: 'Backend', icon: '/icons/spring.svg' },
   { name: 'Git', category: 'Tools', icon: '/icons/git.svg' },
   { name: 'GitHub', category: 'Tools', icon: '/icons/github.svg' },
+  { name: 'Linux', category: 'Tools', icon: '/icons/linux.svg' },
 ]
