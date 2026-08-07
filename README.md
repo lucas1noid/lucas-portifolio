@@ -10,7 +10,7 @@
 
   <p>
     <a href="https://lucas-lopes.netlify.app/">
-      <img src="https://img.shields.io/badge/Live_Demo-lucas--lopes.netlify.app-e11d48?style=for-the-badge" alt="Website Preview" />
+      <img src="https://img.shields.io/badge/Live-lucas--lopes.netlify.app-e11d48?style=for-the-badge" alt="Website" />
     </a>
   </p>
 
@@ -30,7 +30,7 @@ Personal portfolio website built to showcase my projects, skills, and experience
 
 ## Tech Stack
 
-- React, JavaScript (ES6+), CSS3, Vite, Netlify
+- React, Vite, JavaScript, HTML5, CSS3,
 
 ---
 
