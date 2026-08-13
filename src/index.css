@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap');
 
 :root {
-  --ink: #0b0b0b;
+  --ink: #181818;
   --paper: #f2f0ed;
   --white: #fff;
   --red: #e11d48;
@@ -59,7 +59,8 @@ body.theme-light {
 }
 
 body.theme-dark {
-  --dark-surface: var(--ink);
+  --dark-surface: #181818;
+  --light-surface: #222222;
   --dark-content: var(--white);
   --light-surface: #171717;
   --light-content: #f2f0ed;
@@ -68,6 +69,17 @@ body.theme-dark {
   --light-grid: rgba(255, 255, 255, 0.055);
   --bg-text-color: rgba(255, 255, 255, 0.04);
 }
+
+body.theme-dark img[src*='/icons/github.svg'] {
+  content: url('/icons/w-github.svg');
+  position: relative;
+  z-index: 1;
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
 
 body.menu-open,
 body.is-loading {
