@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { community, projects, skills } from './data/portfolio'
 
 const navigation = [
-  ['01', 'About me', '#about-me'],
-  ['02', 'Experience', '#experience'],
-  ['03', 'Projects', '#projects'],
-  ['04', 'Skills', '#skills'],
+  ['01', 'Projects', '#projects'],
+  ['02', 'Skills', '#skills'],
+  ['03', 'About me', '#about-me'],
+  ['04', 'Experience', '#experience'],
   ['05', 'Contact', '#contact'],
 ]
 
@@ -84,38 +84,6 @@ function LoadingScreen() {
       <p className="loader__coordinates">05°47&apos;S / 35°12&apos;W</p>
     </div>
   )
-}
-
-function CustomCursor() {
-  const cursorRef = useRef(null)
-
-  useEffect(() => {
-    if (!window.matchMedia('(pointer: fine)').matches) return undefined
-
-    const cursor = cursorRef.current
-    const moveCursor = ({ clientX, clientY }) => {
-      cursor.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`
-      cursor.classList.add('cursor--visible')
-    }
-    const updateCursor = ({ target }) => {
-      cursor.classList.toggle('cursor--active', Boolean(target.closest('a, button')))
-    }
-    const hideCursor = () => cursor.classList.remove('cursor--visible')
-
-    document.body.classList.add('has-custom-cursor')
-    window.addEventListener('pointermove', moveCursor)
-    document.addEventListener('pointerover', updateCursor)
-    document.documentElement.addEventListener('pointerleave', hideCursor)
-
-    return () => {
-      document.body.classList.remove('has-custom-cursor')
-      window.removeEventListener('pointermove', moveCursor)
-      document.removeEventListener('pointerover', updateCursor)
-      document.documentElement.removeEventListener('pointerleave', hideCursor)
-    }
-  }, [])
-
-  return <div ref={cursorRef} className="cursor" aria-hidden="true" />
 }
 
 function SunIcon() {
@@ -266,10 +234,10 @@ function App() {
   return (
     <>
       <LoadingScreen />
-      <CustomCursor />
       <Header open={menuOpen} setOpen={setMenuOpen} theme={theme} setTheme={setTheme} />
 
       <main>
+        {/* HERO */}
         <section className="hero" id="inicio">
           <div className="hero__wash" aria-hidden="true" />
           <div className="hero__technical hero__technical--top" aria-hidden="true">
@@ -284,8 +252,8 @@ function App() {
 
               <div className="hero__intro">
                 <p>
-                  Hello! I'm <strong>Lucas Lopes</strong>, and this is the portfolio I created to
-                  share a bit more about myself and my work as a programmer.
+                  I'm <strong>Lucas "noid" Lopes</strong>, and this is the portfolio I created to
+                  share a bit more about my work as a programmer and myself.
                 </p>
                 <a className="text-link" href="#projects">
                   Explore projects <Arrow direction="down" />
@@ -312,92 +280,10 @@ function App() {
           <p className="hero__role">DEVELOPER &amp; DIGITAL ENTHUSIAST</p>
         </section>
 
-        {/* 01. ABOUT ME */}
-        <section className="about dark-section" id="about-me">
-          <div className="section-shell">
-            <div className="about__header">
-              <SectionLabel index="01" light>
-                About me
-              </SectionLabel>
-            </div>
-
-            <div className="about__container" data-reveal>
-              {/* Row 1 */}
-              <div className="about__row about__row--first">
-                <p className="about__lead">
-                  I am an aspiring software developer currently studying Computer Science at DIMAp - UFRN.
-                </p>
-                <div className="about__photos-group about__photos-group--top">
-                  <figure className="about__photo about__photo--square">
-                    <img src="/images/cs-logo.png" alt="Computer Society" />
-                  </figure>
-                  <figure className="about__photo about__photo--top-img">
-                    <img src="/images/ufrn-img.png" alt="UFRN" />
-                  </figure>
-                </div>
-              </div>
-              {/* Row 2 */}
-              <div className="about__row about__row--second">
-                <div className="about__photos-group about__photos-group--bottom">
-                  <figure className="about__photo about__photo--bottom-img">
-                    <img src="/images/eu-sol-img.png" alt="Lucas at Hackathon do Sol" loading="lazy" />
-                  </figure>
-                  <figure className="about__photo about__photo--square">
-                    <img src="/images/lucas-gorn-img.png" alt="Lucas in GORN" loading="lazy" />
-                  </figure>
-                </div>
-                <p className="about__body">
-                  Passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity; computing is the medium through which I found my calling.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 02. EXPERIENCE */}
-        <section className="experience dark-section" id="experience">
-          <div className="experience__ghost" aria-hidden="true">
-            EXPERIENCE
-          </div>
-          <div className="section-shell">
-            <SectionLabel index="02" light>
-              Experience
-            </SectionLabel>
-
-            <div className="experience__heading" data-reveal>
-              <p>NOTORIOUS PROFESSIONAL EXPERIENCE AND EXTRACURRICULAR ACTIVITIES</p>
-              <h2>EXPERIENCE</h2>
-            </div>
-
-            <div className="experience__list">
-              {community.map((item, index) => (
-                <article key={item.title} data-reveal>
-                  <span>0{index + 1}</span>
-                  <div>
-                    <p>{item.period}</p>
-                    {item.logo && (
-                      <figure className="experience__logo">
-                        <img src={item.logo} alt={`${item.title} logo`} />
-                      </figure>
-                    )}
-                  </div>
-                  <div>
-                    <h3 translate="no" className="notranslate">
-                      {item.title}
-                    </h3>
-                    <h4>{item.role}</h4>
-                    <p>{item.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 03. PROJECTS */}
+        {/* 01. PROJECTS */}
         <section className="projects light-section" id="projects">
           <div className="section-shell">
-            <SectionLabel index="03">Projects</SectionLabel>
+            <SectionLabel index="01">Projects</SectionLabel>
 
             <div className="section-heading" data-reveal>
               <h2>FEATURED PROJECTS</h2>
@@ -438,10 +324,10 @@ function App() {
           </div>
         </section>
 
-        {/* 04. SKILLS */}
+        {/* 02. SKILLS */}
         <section className="skills light-section" id="skills">
           <div className="section-shell">
-            <SectionLabel index="04">skills</SectionLabel>
+            <SectionLabel index="02">skills</SectionLabel>
 
             <div className="section-heading" data-reveal>
               <h2>SKILLS</h2>
@@ -461,6 +347,88 @@ function App() {
                     {skill.category && <span>{skill.category}</span>}
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 03. ABOUT ME */}
+        <section className="about dark-section" id="about-me">
+          <div className="section-shell">
+            <div className="about__header">
+              <SectionLabel index="03" light>
+                About me
+              </SectionLabel>
+            </div>
+
+            <div className="about__container" data-reveal>
+              {/* Row 1 */}
+              <div className="about__row about__row--first">
+                <p className="about__lead">
+                  I am a software developer currently studying Computer Science at DIMAp - UFRN.
+                </p>
+                <div className="about__photos-group about__photos-group--top">
+                  <figure className="about__photo about__photo--square">
+                    <img src="/images/cs-logo.png" alt="Computer Society" />
+                  </figure>
+                  <figure className="about__photo about__photo--top-img">
+                    <img src="/images/ufrn-img.png" alt="UFRN" />
+                  </figure>
+                </div>
+              </div>
+              {/* Row 2 */}
+              <div className="about__row about__row--second">
+                <div className="about__photos-group about__photos-group--bottom">
+                  <figure className="about__photo about__photo--bottom-img">
+                    <img src="/images/eu-sol-img.png" alt="Lucas at Hackathon do Sol" loading="lazy" />
+                  </figure>
+                  <figure className="about__photo about__photo--square">
+                    <img src="/images/lucas-gorn-img.png" alt="Lucas in GORN" loading="lazy" />
+                  </figure>
+                </div>
+                <p className="about__body">
+                  Passionate about technology and always willing to learn. I enjoy breaking down and creating the logic behind algorithms and systems, as well as expressing my creativity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 04. EXPERIENCE */}
+        <section className="experience dark-section" id="experience">
+          <div className="experience__ghost" aria-hidden="true">
+            EXPERIENCE
+          </div>
+          <div className="section-shell">
+            <SectionLabel index="04" light>
+              Experience
+            </SectionLabel>
+
+            <div className="experience__heading" data-reveal>
+              <p>NOTORIOUS PROFESSIONAL EXPERIENCE AND EXTRACURRICULAR ACTIVITIES</p>
+              <h2>EXPERIENCE</h2>
+            </div>
+
+            <div className="experience__list">
+              {community.map((item, index) => (
+                <article key={item.title} data-reveal>
+                  <span>0{index + 1}</span>
+                  <div>
+                    <p>{item.period}</p>
+                    {item.logo && (
+                      <figure className="experience__logo">
+                        <img src={item.logo} alt={`${item.title} logo`} />
+                      </figure>
+                    )}
+                  </div>
+                  <div>
+                    <h3 translate="no" className="notranslate">
+                      {item.title}
+                    </h3>
+                    <h4>{item.role}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
