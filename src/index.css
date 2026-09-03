@@ -720,22 +720,10 @@ a:hover .arrow--down {
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, padding 0.3s ease;
 }
 
 .about__photo::before {
   opacity: 0;
-}
-
-.about__photo:hover {
-  transform: scale(1.03);
-  padding: 5px;
-  box-shadow: 0 1.2rem 3rem rgba(225, 29, 72, 0.28);
-}
-
-.about__photo:hover::before {
-  opacity: 1;
-  animation-duration: 2.5s;
 }
 
 .about__photo--square {
@@ -853,6 +841,22 @@ a:hover .arrow--down {
 .experience__list article div > p:first-child {
   margin: 0 0 0.75rem;
   color: #74716e;
+}
+
+.experience__logo-link {
+  display: block;
+}
+
+.experience__title-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.experience__title-link:hover {
+  color: var(--red);
 }
 
 .experience__logo {

@@ -9,6 +9,12 @@ const navigation = [
   ['05', 'Contact', '#contact'],
 ]
 
+const communityLinks = [
+  'https://www.instagram.com/ieeeufrn/',
+  'https://www.poticode.com.br/',
+  'https://hackathondosol.com.br/',
+]
+
 function Arrow({ direction = 'diagonal' }) {
   return (
     <span className={`arrow arrow--${direction}`} aria-hidden="true">
@@ -246,9 +252,11 @@ function App() {
 
           <div className="hero__layout">
             <aside className="hero__profile">
-              <figure className="hero__photo">
-                <img src="/images/lucas-hero.png" alt="Lucas Lopes" />
-              </figure>
+              <a href="#about-me" aria-label="Go to About me section">
+                <figure className="hero__photo">
+                  <img src="/images/lucas-hero.png" alt="Lucas Lopes" />
+                </figure>
+              </a>
 
               <div className="hero__intro">
                 <p>
@@ -410,26 +418,43 @@ function App() {
             </div>
 
             <div className="experience__list">
-              {community.map((item, index) => (
-                <article key={item.title} data-reveal>
-                  <span>0{index + 1}</span>
-                  <div>
-                    <p>{item.period}</p>
-                    {item.logo && (
-                      <figure className="experience__logo">
-                        <img src={item.logo} alt={`${item.title} logo`} />
-                      </figure>
-                    )}
-                  </div>
-                  <div>
-                    <h3 translate="no" className="notranslate">
-                      {item.title}
-                    </h3>
-                    <h4>{item.role}</h4>
-                    <p>{item.description}</p>
-                  </div>
-                </article>
-              ))}
+              {community.map((item, index) => {
+                const link = item.link || communityLinks[index]
+                return (
+                  <article key={item.title} data-reveal>
+                    <span>0{index + 1}</span>
+                    <div>
+                      <p>{item.period}</p>
+                      {item.logo && (
+                        link ? (
+                          <a href={link} target="_blank" rel="noreferrer" className="experience__logo-link">
+                            <figure className="experience__logo">
+                              <img src={item.logo} alt={`${item.title} logo`} />
+                            </figure>
+                          </a>
+                        ) : (
+                          <figure className="experience__logo">
+                            <img src={item.logo} alt={`${item.title} logo`} />
+                          </figure>
+                        )
+                      )}
+                    </div>
+                    <div>
+                      <h3 translate="no" className="notranslate">
+                        {link ? (
+                          <a href={link} target="_blank" rel="noreferrer" className="experience__title-link">
+                            {item.title} <Arrow />
+                          </a>
+                        ) : (
+                          item.title
+                        )}
+                      </h3>
+                      <h4>{item.role}</h4>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                )
+              })}
             </div>
           </div>
         </section>
