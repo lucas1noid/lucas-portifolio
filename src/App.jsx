@@ -29,7 +29,7 @@ function LoadingScreen() {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const duration = 3000
+    const duration = 1500
     const startedAt = performance.now()
     let animationFrame
     let exitTimer
@@ -67,6 +67,7 @@ function LoadingScreen() {
     <div className={`loader ${complete ? 'loader--complete' : ''}`} aria-label="Loading portfolio">
       <div className="loader__panel">
         <video autoPlay loop muted playsInline preload="auto" aria-hidden="true">
+          <source src="/noid-logo.mov" type="video/quicktime" />
           <source src="/noid-logo.webm" type="video/webm" />
         </video>
 
@@ -139,6 +140,7 @@ function Header({ open, setOpen, theme, setTheme }) {
     <header className={`site-header ${open ? 'site-header--menu-open' : ''}`}>
       <a className="brand" href="#inicio" onClick={closeMenu} aria-label="Lucas Lopes, back to home">
         <video autoPlay loop muted playsInline preload="auto" aria-hidden="true">
+          <source src="/noid-logo.mov" type="video/quicktime" />
           <source src="/noid-logo.webm" type="video/webm" />
         </video>
       </a>
@@ -245,7 +247,6 @@ function App() {
       <main>
         {/* HERO */}
         <section className="hero" id="inicio">
-          <div className="hero__wash" aria-hidden="true" />
           <div className="hero__technical hero__technical--top" aria-hidden="true">
             05°47&apos;S — 35°12&apos;W
           </div>
@@ -290,6 +291,9 @@ function App() {
 
         {/* 01. PROJECTS */}
         <section className="projects light-section" id="projects">
+          <div className="projects__ghost" aria-hidden="true">
+            PROJECTS
+          </div>
           <div className="section-shell">
             <SectionLabel index="01">Projects</SectionLabel>
 
@@ -334,6 +338,9 @@ function App() {
 
         {/* 02. SKILLS */}
         <section className="skills light-section" id="skills">
+          <div className="skills__ghost" aria-hidden="true">
+            SKILLS
+          </div>
           <div className="section-shell">
             <SectionLabel index="02">skills</SectionLabel>
 
@@ -362,11 +369,18 @@ function App() {
 
         {/* 03. ABOUT ME */}
         <section className="about dark-section" id="about-me">
+          <div className="about__ghost" aria-hidden="true">
+            ABOUT ME
+          </div>
           <div className="section-shell">
             <div className="about__header">
               <SectionLabel index="03" light>
                 About me
               </SectionLabel>
+            </div>
+
+            <div className="about__heading" data-reveal>
+              <h2>ABOUT ME</h2>
             </div>
 
             <div className="about__container" data-reveal>
