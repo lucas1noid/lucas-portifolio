@@ -76,6 +76,7 @@ export const skills = [
   { name: 'Astro', category: 'Frontend', icon: '/icons/astro.svg' },
   { name: 'Node.js', category: 'Backend', icon: '/icons/node.svg' },
   { name: 'Spring boot', category: 'Backend', icon: '/icons/spring.svg' },
+  { name: 'Apptainer', category: 'container', icon: '/icons/Apptainer_v3.svg' },
   { name: 'Git', category: 'Tools', icon: '/icons/git.svg' },
   { name: 'GitHub', category: 'Tools', icon: '/icons/github.svg' },
   { name: 'Linux', category: 'Tools', icon: '/icons/linux.svg' },
