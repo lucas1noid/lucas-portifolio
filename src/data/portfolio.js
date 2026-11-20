@@ -46,6 +46,12 @@ export const projects = [
 ]
 
 export const community = [
+    {
+    title: 'Laniaq',
+    role: 'Costumer Success & SysAdmin Linux · Bussines team',
+    period: 'HPC / Server Solutions',
+    logo: '/images/laniaq.png',
+  },
   {
     title: 'IEEE - Computer Society',
     role: 'Selected volunteer member of CS/IEEE · Chapter - UFRN',
