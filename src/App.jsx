@@ -10,6 +10,7 @@ const navigation = [
 ]
 
 const communityLinks = [
+  'https://www.laniaq.com/',
   'https://www.instagram.com/ieeeufrn/',
   'https://www.poticode.com.br/',
   'https://hackathondosol.com.br/',
